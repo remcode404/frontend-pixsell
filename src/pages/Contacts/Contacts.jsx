@@ -1,7 +1,7 @@
 import React from "react";
 import style from "../Contacts/Contacts.module.scss";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
-// import frame from '../Contacts/files/Frame.png'
+import placemarkIcon from '../Contacts/files/Frame.png'
 
 const Contacts = () => {
 
@@ -31,10 +31,9 @@ const Contacts = () => {
           >
             <Placemark defaultGeometry={[43.324675, 45.692376]} options={
                 {
-                  // preset: 'islands#circleIcon', // список темплейтов на сайте яндекса
-                  iconColor: 'red', // цвет иконки, можно также задавать в hex
-                  // iconLayout: 'default#imageWithContent',
-                  iconImageHref: 'https://sandbox.api.maps.yandex.net/examples/ru/2.1/icon_customImage/images/myIcon.gif',
+                  iconLayout: "default#image",
+                  iconImageHref: placemarkIcon,
+                  iconImageSize: [43.324675, 45.692376],
                 } }/>
           </Map>
         </YMaps>
