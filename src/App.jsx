@@ -7,8 +7,8 @@ function App() {
   return (
     <div className="app">
       <Header/>
-     <MainPageGame/>
-     <Footer/>
+      <MainPageGame/>
+      <Footer/>
     </div>
   );
 }
