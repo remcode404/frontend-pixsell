@@ -3,6 +3,7 @@ import adamPhoto from "./photos/adam.png";
 import arrow from "./photos/Arrow.svg";
 import style from "./Main.module.scss";
 import SocialNetwork from "../../components/SocialNetwork/SocialNetwork";
+
 const MainPageGame = () => {
   return (
     <div className={style.main}>
@@ -35,15 +36,21 @@ const MainPageGame = () => {
         <img className={style.adamPhoto} src={adamPhoto} alt="adam" />
         <ul className={style.sidebar_list}>
           <li className={style.sidebar_items}>
-          Игры <span className={style.sidebar_square}></span>
+            Игры <span className={style.sidebar_square}></span>
           </li>
           <li className={style.sidebar_items}>
             Наши работы
-            <span style={{backgroundColor: '#CE0002', outline: 0}} className={style.sidebar_square}></span>
+            <span
+              style={{ backgroundColor: "#CE0002", outline: 0 }}
+              className={style.sidebar_square}
+            ></span>
           </li>
           <li className={style.sidebar_items}>
             Последние проекты
-            <span style={{backgroundColor: '#CE0002', outline: 0}} className={style.sidebar_square}></span>
+            <span
+              style={{ backgroundColor: "#CE0002", outline: 0 }}
+              className={style.sidebar_square}
+            ></span>
           </li>
         </ul>
       </div>
