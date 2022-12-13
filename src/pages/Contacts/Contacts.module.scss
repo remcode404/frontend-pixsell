@@ -1,0 +1,38 @@
+.contactsParent {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10%;
+
+    .blockContacts {
+        
+        .textContacts {
+            margin-bottom: 13%;
+            font-size: 60px;
+            line-height: 80px;
+        }
+
+        .phone {
+            font-size: 26px;
+            line-height: 36px;
+        }
+
+        .textEmail {
+            font-size: 22px;
+            line-height: 33px;
+        }
+
+        .address {
+            margin-top: 10%;
+            font-size: 22px;
+            line-height: 33px;
+        }
+    }
+
+    .YMap {
+        height: 55%;
+        width: 55%;
+    }
+}
