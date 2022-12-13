@@ -7,7 +7,7 @@ import MainPageGame from "./pages/Games/MainPageGame";
 function App() {
   return (
     <div className="app">
-      <Header/>
+    <Header/>
      <MainPage/>
      <Footer/>
     </div>
