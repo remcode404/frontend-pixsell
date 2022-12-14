@@ -8,6 +8,7 @@ import game4 from "./photos/game4.png";
 const GamesList = () => {
   return (
     <div className={style.main}>
+      <div className={style.manLists}>
       <div className={style.firstBlockData}>
         <div className={style.firstBlock}>
           <div className={style.description}>
@@ -97,6 +98,7 @@ const GamesList = () => {
 
       <div className={style.moreProjects}>
         <button className={style.btnMoreProjects}>Больше проектов</button>
+      </div>
       </div>
     </div>
   );

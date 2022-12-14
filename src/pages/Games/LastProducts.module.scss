@@ -10,10 +10,11 @@
     align-items: center;
     justify-content: space-between;
     margin-top: 50px;
+    font-size: 3.3rem;
 
-    p {
-      font-size: 68px;
-    }
+    // .titleCard {
+    //   font-size: 68px;
+    // }
 
     .arrows {
       display: flex;
@@ -53,7 +54,7 @@
     // flex-direction: column;
     width: 100%;
     justify-content: space-around;
-    height: 800px;
+    height: 500px;
 
     .firstBlock {
       width: 300px;
@@ -74,15 +75,15 @@
       flex-direction: column;
       justify-content: space-between;
       .name {
-        font-size: 32px;
+        font-size: 1.8rem;
       }
 
-      .title {
-        font-size: 22px;
+      .titleCard {
+        font-size: 1.3rem;
       }
 
       .text {
-        font-size: 19px;
+        font-size: 1.2rem;
       }
       .onebtn {
         width: 170px;
@@ -106,6 +107,7 @@
         background-color: #ce0002;
         color: white;
         border: none;
+     
       }
     }
   }
