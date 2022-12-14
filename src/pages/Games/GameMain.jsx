@@ -4,10 +4,17 @@ import MainPageGame from "./MainPageGame";
 
 const GamePages = () => {
   return (
-    <div>
-      <MainPageGame />
-      <GamesList />
-      <LastProjects />
+    <div className="">
+      <div id="mainPage">
+        <MainPageGame />
+      </div>
+
+      <div id="gameList">
+        <GamesList />
+      </div>
+      <div id="lastProjects">
+        <LastProjects />
+      </div>
     </div>
   );
 };

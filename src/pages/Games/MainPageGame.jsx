@@ -3,15 +3,23 @@ import adamPhoto from "./photos/adam.png";
 import arrow from "./photos/Arrow.svg";
 import style from "./Main.module.scss";
 import SocialNetwork from "../../components/SocialNetwork/SocialNetwork";
+import { useState } from "react";
 
 const MainPageGame = () => {
+  const arr = [
+    { text: "Игры", id: "mainPage" },
+    { text: "Наши работы", id: "gameList" },
+    { text: "Последние проекты", id: "lastProjects" },
+  ];
+  const [sideBarItems, setSideBarItems] = useState(0);
+
+  
+
   return (
-    <div className={style.main}>
+    <div id="mainPage" className={style.main}>
       <div className={style.sectionOne}>
         <div className={style.socialNetworkLogos}>
-         
           <SocialNetwork />
-          
         </div>
         <div className={style.deskriptionDevelopers}>
           <p className={style.game}>игры</p>
@@ -27,33 +35,37 @@ const MainPageGame = () => {
             пробуем себя в новых жанрах.
           </p>
           <div>
-            <button className={style.BtnOurWorks}>
-              Смотреть наши работы
-              <img className={style.arrow} src={arrow} alt="f" />
-            </button>
+            <a className={style.BtnOurWorks} href="#gameList">
+              <button className={style.BtnOurWorks}>
+                Смотреть наши работы
+                <img className={style.arrow} src={arrow} alt="f" />
+              </button>
+            </a>
           </div>
         </div>
       </div>
       <div className={style.sectionTwo}>
         <img className={style.adamPhoto} src={adamPhoto} alt="adam" />
         <ul className={style.sidebar_list}>
-          <li className={style.sidebar_items}>
-            Игры <span className={style.sidebar_square}></span>
-          </li>
-          <li className={style.sidebar_items}>
-            Наши работы
-            <span
-              style={{ backgroundColor: "#CE0002", outline: 0 }}
-              className={style.sidebar_square}
-            ></span>
-          </li>
-          <li className={style.sidebar_items}>
-            Последние проекты
-            <span
-              style={{ backgroundColor: "#CE0002", outline: 0 }}
-              className={style.sidebar_square}
-            ></span>
-          </li>
+          {arr.map((item, index) => (
+            <li
+            key={index}
+              onClick={() => setSideBarItems(index)}
+              className={style.sidebar_items}
+            >
+              <a className={style.aHrefs} href={"#" + item.id}>
+                {item.text}
+              </a>
+              <span
+
+                className={
+                  sideBarItems === index
+                    ? `${style.sidebar_square}`
+                    : `${style.sideBarTrue}`
+                }
+              > <a className={style.spanAHref} href={"#" + item.id}>O</a> </span>
+            </li>
+          ))}
         </ul>
       </div>
     </div>

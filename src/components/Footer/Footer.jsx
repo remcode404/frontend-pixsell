@@ -15,7 +15,7 @@ const Footer = () => {
       </div>
 
       <div className={style.links}>
-        <Link to="/main">
+        <Link to="/">
           <button className={style.BtnLink}>Главная</button>
         </Link>
         <Link to="/compain">
@@ -24,7 +24,7 @@ const Footer = () => {
         <Link to="/games">
           <button className={style.BtnLink}>Игры</button>
         </Link>
-        <Link to="/сareer">
+        <Link to="/career">
           <button className={style.BtnLink}>Карьера</button>
         </Link>
         <Link to="/news">
