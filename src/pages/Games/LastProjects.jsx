@@ -53,6 +53,7 @@ const LastProjects = () => {
               Подробнее
               <img className={style.arrow} src={arrow} alt="f" />
             </button>
+            
           </div>
         </div>
         <div className={style.firstBlock}>
