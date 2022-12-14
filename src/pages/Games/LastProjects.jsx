@@ -27,7 +27,7 @@ const LastProjects = () => {
           <img className={style.photo} src={photo1} alt="d" />
           <div className={style.description}>
             <p className={style.name}>Escape Masters</p>
-            <p>Совершите идеальный побег!</p>
+            <p className={style.titleCard} >Совершите идеальный побег!</p>
             <p className={style.text}>
               Спаси напарников, собери сокровища и прокопай путь к свободе, но
               опасайся ловушек, людей и Адама прочих усатых человеков
@@ -43,7 +43,7 @@ const LastProjects = () => {
           <img className={style.photo} src={photo2} alt="d" />
           <div className={style.description}>
             <p className={style.name}>DESIGN MASTERS</p>
-            <p>Станьте дизайнером интерьеров!</p>
+            <p className={style.titleCard}>Станьте дизайнером интерьеров!</p>
             <p className={style.text}>
               Проходите уровни матч-3, создавайте собственные дизайны и
               интерьеры, следите за историей и знакомьтесь с персонажами.
@@ -59,7 +59,7 @@ const LastProjects = () => {
           <img className={style.photo} src={photo3} alt="d" />
           <div className={style.description}>
             <p className={style.name}>Perfect Makeup 3D</p>
-            <p>Добро пожаловать в мир макияжа!</p>
+            <p className={style.titleCard}>Добро пожаловать в мир макияжа!</p>
             <p className={style.text}>
               Выбирайте кисти, цвета и оттенки губной помады, подводки для глаз,
               чтобы добиться превосходного результата.
@@ -67,7 +67,7 @@ const LastProjects = () => {
             <button className={style.btnInformation}>
               {" "}
               Подробнее
-              <img className={style.arrows} src={arrow} alt="f" />
+              <img className={style.arrowss} src={arrow} alt="f" />
             </button>
           </div>
         </div>
