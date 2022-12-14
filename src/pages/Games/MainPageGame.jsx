@@ -9,7 +9,9 @@ const MainPageGame = () => {
     <div className={style.main}>
       <div className={style.sectionOne}>
         <div className={style.socialNetworkLogos}>
+         
           <SocialNetwork />
+          
         </div>
         <div className={style.deskriptionDevelopers}>
           <p className={style.game}>игры</p>
