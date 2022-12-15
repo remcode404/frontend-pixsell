@@ -1,0 +1,110 @@
+.mainDiv {
+  position: relative;
+  width: 100vw;
+  z-index: -1;
+  .grayDiv {
+    height: 100vh;
+    background-color: #c89b9b;
+  }
+  .backButton {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    width: 10%;
+    height: 11%;
+    left: 20%;
+    top: 10%;
+    background: #ce0002;
+  }
+  .backButton p {
+    font-weight: 800;
+    font-size: 22px;
+    line-height: 27px;
+    color: #ffffff;
+  }
+  .titleText {
+    position: absolute;
+    width: 30%;
+    height: 20%;
+    left: 0;
+    top: 170%;
+  }
+  .titleText p {
+    font-weight: 800;
+    font-size: 50px;
+    line-height: 85px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+  .titleLittle {
+    position: absolute;
+    width: 1057px;
+    height: 70px;
+    left: 0;
+    top: 500px;
+  }
+  .titleLittle p {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 30px;
+    color: #000000;
+  }
+  .howToDo {
+    position: absolute;
+    width: 1057px;
+    height: 100px;
+    left: 0;
+    top: 600px;
+  }
+  .howToDo span {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 30px;
+    color: #000000;
+  }
+  .requirements {
+    position: absolute;
+    width: 1057px;
+    height: 100px;
+    left: 0;
+    top: 750px;
+  }
+  .requirements span {
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 30px;
+    color: #000000;
+  }
+  .ourOffers {
+    position: absolute;
+    width: 1057px;
+    height: 100px;
+    left: 0;
+    top: 950px;
+  }
+  .ourOffers p {
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 30px;
+    color: #000000;
+  }
+  .textUs {
+    width: 100%;
+  }
+  .textTitleUs {
+    position: absolute;
+    width: 603px;
+    height: 170px;
+    left: 185px;
+    top: 2123px;
+  }
+  .textTitleUs p {
+    font-weight: 800;
+    font-size: 72px;
+    line-height: 85px;
+    text-transform: uppercase;
+    color: #000000;
+  }
+}
