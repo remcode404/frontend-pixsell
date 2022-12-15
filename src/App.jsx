@@ -7,19 +7,17 @@ import Header from "./components/Header/Header";
 import GamePages from "./pages/Games/GameMain";
 import { Route, Routes } from "react-router-dom";
 import VacancyMain from "./pages/Vacancy/VacancyMain";
-import OurTeam from "./pages/OurTeam/OurTeam";
 
 function App() {
   return (
     <div className="app">
     <Header/>
-      {/* <Routes>
+      <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/games" element={<GamePages />} />
         <Route path="/career" element={<VacancyMain />} />
         <Route path="/contacts" element={<Contacts />} />
-      </Routes> */}
-      <OurTeam />
+      </Routes>
       <Footer />
     </div>
   );
