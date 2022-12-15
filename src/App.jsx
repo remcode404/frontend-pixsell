@@ -6,16 +6,12 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import GamePages from "./pages/Games/GameMain";
 import { Route, Routes } from "react-router-dom";
-import VacancyMain from "./pages/Vacancy/VacancyMain";
-import MainPage from "./pages/MainPage/MainPage";
+import VacancyMain from "./pages/Vacancy/VacancyMain"
 
 function App() {
   return (
     <div className="app">
     <Header/>
-     <MainPage/>
-     <Footer/>
-      <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
         <Route path="/games" element={<GamePages />} />
