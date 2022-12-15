@@ -1,0 +1,50 @@
+.main_job {
+  width: 100%;
+  display: flex;
+  margin-top: 5%;
+  .main_text {
+    width: 40%;
+    padding: 5%;
+    margin-left: 6%;
+    .main_title {
+      font-weight: 800;
+      font-size: 50px;
+      text-transform: uppercase;
+    }
+    .main_description {
+      font-weight: 600;
+    }
+  }
+  .main_blockBenefints {
+    padding: 5%;
+    display: flex;
+    align-items: center;
+    .blockBenefints_items {
+      display: flex;
+      flex-wrap: wrap;
+      .blockBenefints_item {
+        width: 40%;
+        padding: 2%;
+        .item_imageDiv {
+          background-color: #F5F5F5;
+          padding: 5% 9%;
+          width: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          .item_image {
+            width: 100%;
+            height: 78px;
+          }
+          margin-bottom: 5%;
+        }
+        .item_titleText {
+          font-weight: 800;
+        }
+        .item_descriptionText {
+          color: #7D7A9A;
+        }
+      }
+    }
+  }
+}

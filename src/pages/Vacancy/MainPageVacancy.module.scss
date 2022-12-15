@@ -1,6 +1,6 @@
 .main {
   display: flex;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
 
   .sectionOne {
@@ -12,8 +12,23 @@
 
     .socialNetworkLogos {
       margin-top: 70px;
-      position: absolute;
+      position: fixed;
       left: 5%;
+    }
+
+    .btnUpMain {
+      position: fixed;
+      right: 2%;
+      bottom: 10%;
+      border: none;
+      background-color: black;
+      color: white;
+      width: 4%;
+      height: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 10px;
     }
 
     .deskriptionDevelopers {
@@ -33,7 +48,9 @@
       .text {
         font-size: 20px;
       }
-      .BtnOurWorks {
+      .AOurWorks {
+        text-decoration: none;
+        .BtnOurWorks {
         width: 150px;
         text-align: left;
         background-color: #ce0002;
@@ -44,6 +61,8 @@
         justify-content: space-around;
         align-items: center;
       }
+      }
+      
     }
   }
 
@@ -78,12 +97,23 @@
         justify-content: flex-end;
         align-items: center;
         padding-bottom: 5px;
+        .aHrefs {
+          text-decoration: none;
+          color: #686868;
+        }
         .sidebar_square {
           outline: 2px solid #bbbbbb;
           background-color: #686868;
           width: 15px;
           height: 15px;
           margin-left: 7px;
+        }
+        .sideBarTrue {
+          width: 15px;
+          height: 15px;
+          margin-left: 7px;
+          background-color: #CE0002; 
+          outline: 0;
         }
       }
     }

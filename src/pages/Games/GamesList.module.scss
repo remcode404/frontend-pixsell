@@ -1,31 +1,42 @@
 .main {
-  width: 70vw;
+  width: 80vw;
   display: flex;
   margin: 0 auto;
   flex-direction: column;
   background-color: #fafafa;
+.manLists{
+
+
+  width: 65vw;
+  display: flex;
+  margin: 0 auto;
+  flex-direction: column;
+  background-color: #fafafa;
+
   .firstBlockData {
     display: flex;
-    margin-top: 100px;
+    margin-top: 130px;
 
     .firstBlock {
-      width: 40vw;
-      height: 40vh;
+      width: 60vw;
+      height: 60vh;
       display: flex;
       align-items: center;
       justify-content: flex-start;
       .description {
         width: 25vw;
-
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
         .title {
-          width: 350px;
-          font-size: 68px;
+          width: 20rem;
+          font-size: 3rem;
         }
         .motivation {
-          font-size: 20px;
+          font-size: 1.5rem;
         }
         .text {
-          font-size: 20px;
+          font-size: 1.2rem;
         }
 
         .btn {
@@ -40,32 +51,34 @@
     }
 
     .game1 {
-      width: 35vw;
-      height: 65vh;
+      width: 32.4vw;
+      height: 60vh;
     }
   }
 
   .secondBlockData {
-    margin-top: 100px;
+    margin-top: 130px;
     display: flex;
     .secondBlock {
-      width: 40vw;
-      height: 40vh;
+      width: 60vw;
+      height: 60vh;
       display: flex;
       align-items: center;
       justify-content: center;
       .description {
         width: 25vw;
-
+display: flex;
+flex-direction: column;
+justify-content: center;
         .title {
-          width: 350px;
-          font-size: 68px;
+          width: 20rem;
+          font-size: 3rem;
         }
         .motivation {
-          font-size: 20px;
+          font-size: 1.5rem;
         }
         .text {
-          font-size: 20px;
+          font-size: 1.2rem;
         }
 
         .btn {
@@ -79,8 +92,8 @@
       }
     }
     .game1 {
-      width: 35vw;
-      height: 65vh;
+      width: 32.3vw;
+      height: 60vh;
     }
   }
 
@@ -98,4 +111,5 @@
       border: none;
     }
   }
+}
 }
