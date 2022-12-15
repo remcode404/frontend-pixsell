@@ -2,6 +2,7 @@ import React from "react";
 import style from "../MainPage/MainPage.module.scss";
 import horse from "../MainPage/files/Frame.png";
 import arrow from "../MainPage/files/Arrow 3.svg";
+import { Link } from "react-router-dom";
 
 const MainPage = () => {
   return (
@@ -11,7 +12,9 @@ const MainPage = () => {
           Мы создаем мобильные игры, в которые ты играешь
         </div>
         <div className={style.moreButton}>
-          <p className={style.blockText}>Узнать подробнее</p>
+         <Link className={style.blockText}  to='/compain'>
+         <p className={style.blockText}>Узнать подробнее</p>
+         </Link> 
           <div className={style.arrowMore}>
             <img src={arrow} alt="Стрелка" />
           </div>
