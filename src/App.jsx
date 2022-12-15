@@ -7,7 +7,7 @@ import Header from "./components/Header/Header";
 import GamePages from "./pages/Games/GameMain";
 import { Route, Routes } from "react-router-dom";
 import VacancyMain from "./pages/Vacancy/VacancyMain";
-// import MainPage from "./pages/MainPage/MainPage";
+import MainPage from "./pages/MainPage/MainPage";
 
 function App() {
   return (
