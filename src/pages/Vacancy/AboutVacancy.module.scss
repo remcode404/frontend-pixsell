@@ -1,14 +1,9 @@
 .mainDiv {
-//   position: relative;
+  position: relative;
   width: 100vw;
-  height: 100%;
-
-//   z-index: -1;
-  
-
+  z-index: -1;
   .grayDiv {
-    height: 100%;
-    
+    height: 100vh;
     background-color: #c89b9b;
   }
   .backButton {
