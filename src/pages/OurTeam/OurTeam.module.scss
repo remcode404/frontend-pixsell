@@ -1,0 +1,110 @@
+.parentOurTeam {
+  width: 100%;
+  height: 84.8vh;
+
+  .bcgYellow {
+    width: 100%;
+    height: 85vh;
+    background: linear-gradient(90deg, #ffee2f 57.4%, transparent 50%);
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+
+    .parentBlockInf {
+      width: 90%;
+      height: 85vh;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+
+      .blockInf {
+        display: grid;
+        align-items: flex-end;
+        justify-content: center;
+
+        .blockTitleAndBtn {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-bottom: 20px;
+
+          .title {
+            font-size: 70px;
+            font-weight: 800px;
+            font-style: normal;
+            line-height: 85px;
+            text-transform: uppercase;
+            color: #000000;
+          }
+
+          .blockBtn {
+            width: 16%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 30px;
+
+            .btnLeft {
+              width: 60px;
+              height: 60px;
+              background: #F1F1F1;
+              border: none;
+              color: #b1b1b1;
+            }
+
+            .btnRight {
+              width: 60px;
+              height: 60px;
+              background: #CE0002;
+              color: white;
+              border: none;
+            }
+          }
+        }
+
+        .cards {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          width: 100%;
+          height: 100%;
+
+          .card {
+            height: 100%;
+            width: 17%;
+
+            .photo {
+              width: 210px;
+              margin-bottom: 10px;
+            }
+
+            .name {
+              font-style: normal;
+              font-weight: 800;
+              font-size: 29px;
+              line-height: 40px;
+              margin-bottom: 8px;
+            }
+
+            .post {
+              font-style: normal;
+              font-weight: 600;
+              font-size: 20px;
+              line-height: 25px;
+              color: #646464;
+              margin-bottom: 20px;
+            }
+
+            .quote {
+              font-style: normal;
+              font-weight: 600;
+              font-size: 17px;
+              line-height: 25px;
+              color: #646464;
+            }
+          }
+        }
+      }
+    }
+  }
+}
