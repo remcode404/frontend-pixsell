@@ -1,6 +1,7 @@
 import "./App.scss";
 
 import Contacts from "./pages/Contacts/Contacts";
+import MainPage from "./pages/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import GamePages from "./pages/Games/GameMain";
@@ -11,6 +12,9 @@ import MainPage from "./pages/MainPage/MainPage";
 function App() {
   return (
     <div className="app">
+    <Header/>
+     <MainPage/>
+     <Footer/>
       <Header />
       <Routes>
         <Route path="/" element={<MainPage />} />
