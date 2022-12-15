@@ -6,7 +6,7 @@ import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
 import GamePages from "./pages/Games/GameMain";
 import { Route, Routes } from "react-router-dom";
-import VacancyMain from "./pages/Vacancy/VacancyMain";
+import VacancyMain from "./pages/Vacancy/VacancyMain"
 
 function App() {
   return (
