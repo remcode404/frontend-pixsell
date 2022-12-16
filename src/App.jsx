@@ -1,16 +1,14 @@
 import "./App.scss";
 
-import Contacts from "./pages/Contacts/Contacts";
 import Footer from "./components/Footer/Footer";
 import Header from "./components/Header/Header";
-import GamePages from "./pages/Games/GameMain";
+import AboutCompany from "./pages/AboutCompany/AboutCompany";
 
 function App() {
   return (
     <div className="app">
       <Header />
-      <Contacts />
-      <GamePages />
+      <AboutCompany />
       <Footer />
     </div>
   );
