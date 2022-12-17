@@ -6,6 +6,7 @@ import photo1 from "./photos/game1.png";
 import photo2 from "./photos/game2.png";
 import photo3 from "./photos/game3.png";
 import arrow from "./photos/Arrow 3.svg";
+
 const LastProjects = () => {
   return (
     <div className={style.LastProjects}>
@@ -53,6 +54,7 @@ const LastProjects = () => {
               Подробнее
               <img className={style.arrow} src={arrow} alt="f" />
             </button>
+            
           </div>
         </div>
         <div className={style.firstBlock}>
