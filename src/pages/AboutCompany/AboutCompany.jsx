@@ -5,9 +5,10 @@ import img2 from "./files/Frame2.svg";
 import img3 from "./files/Frame3.svg";
 import img4 from "./files/Frame4.svg";
 import SocialNetwork from "../../components/SocialNetwork/SocialNetwork";
-
+import OurTeam from '../OurTeam/OurTeam'
 const AboutCompany = () => {
   return (
+    <div id="first" className={style.aboutAndOurTeam}> 
     <div className={style.mainParent}>
       <div className={style.leftSide}>
         <SocialNetwork />
@@ -74,16 +75,22 @@ const AboutCompany = () => {
         <div className={style.cubes}>
           {/* <div className={style.studiocube}> */}
           <div className={style.text}>
-            О СТУДИИ <span className={style.cube}></span>
+          <a className={style.aHrefs} href="#first">  О СТУДИИ   <span className={style.cube}></span> </a>
           </div>
           {/* </div> */}
           {/* <div className={style.teamCube}> */}
           <div className={style.text}>
-            КОМАНДА <span className={style.cube}></span>
+            <a className={style.aHrefs}  href="#second">    КОМАНДА <span className={style.cube}></span>  </a>
+          
           </div>
           {/* </div> */}
         </div>
       </div>
+    </div>
+     <div id="second" >
+     <OurTeam />
+      </div> 
+
     </div>
   );
 };
