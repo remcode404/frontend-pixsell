@@ -4,6 +4,42 @@
   margin: 0 auto;
   flex-direction: column;
   background-color: #fafafa;
+
+.custom_loader{
+position: absolute;
+  width: 70px;
+  height: 70px;
+  display: grid;
+  left: 50%;
+  color: #ce0002;
+  background: radial-gradient(farthest-side, currentColor calc(100% - 5px),#0000 calc(100% - 5px) 0);
+  -webkit-mask:radial-gradient(farthest-side,#0000 calc(100% - 13px),#000 calc(100% - 12px));
+  border-radius: 50%;
+  animation: s9 2s infinite linear;
+}
+.custom_loader::before,
+.custom_loader::after {    
+  content:"";
+  grid-area: 1/1;
+  background:
+    linear-gradient(currentColor 0 0) center,
+    linear-gradient(currentColor 0 0) center;
+  background-size: 100% 10px,10px 100%;
+  background-repeat: no-repeat;
+}
+.custom_loader::after {
+   transform: rotate(45deg);
+}
+
+@keyframes s9 { 
+  100%{transform: rotate(1turn)}
+}
+
+
+
+
+
+
 .manLists{
 
 
