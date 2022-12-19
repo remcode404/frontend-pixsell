@@ -43,7 +43,7 @@ const OurTeam = () => {
 
               <div className={style.card}>
                 <img className={style.photo} src={photo1} alt="Адам" />
-                <div className={style.name}>Гиммлер Адам</div>
+                <div className={style.name}>Цуров Адольф</div>
                 <div className={style.post}>Директор CC</div>
                 <div className={style.quote}>
                   Цитата: <br />

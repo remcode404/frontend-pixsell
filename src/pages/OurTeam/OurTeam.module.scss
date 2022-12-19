@@ -1,17 +1,21 @@
 .parentOurTeam {
-  width: 100%;
-  height: 84.8vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 
+  width: 100%;
+  height: 85vh;
   .bcgYellow {
     width: 100%;
-    height: 85vh;
-    background: linear-gradient(90deg, #ffee2f 57.4%, transparent 50%);
+  height: 100%;
+    
+    background: linear-gradient(90deg, #ffee2f 45.09%, transparent 40%);
     display: flex;
     align-items: flex-end;
     justify-content: center;
 
     .parentBlockInf {
-      width: 90%;
+      width: 100%;
       height: 85vh;
       display: flex;
       align-items: flex-end;

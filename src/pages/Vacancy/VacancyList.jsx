@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import style from './VacancyList.module.scss';
 
 const VacancyList = () => {
@@ -8,7 +9,7 @@ const VacancyList = () => {
       <div className={style.main_blocksvacancy}>
         <div className={style.main_itemvacancy}>
           <h2 className={style.main_titlevacancy}>User Acquisition Manager</h2>
-          <button className={style.button_itemvacancy} onClick={() => console.log('sdada')}>
+          <Link to='/aboutVacancy' className={style.button_itemvacancy} >     <button className={style.button_itemvacancy} onClick={() => console.log('sdada')}>
             Подробнее
             <svg
               width="88"
@@ -23,10 +24,11 @@ const VacancyList = () => {
               />
             </svg>
           </button>
+          </Link> 
         </div>
         <div className={style.main_itemvacancy}>
           <h2 className={style.main_titlevacancy}>User Acquisition Manager</h2>
-          <button className={style.button_itemvacancy} onClick={() => console.log('sdada')}>
+          <Link className={style.button_itemvacancy}  to='/aboutVacancy'>  <button className={style.button_itemvacancy} onClick={() => console.log('sdada')}>
             Подробнее
             <svg
               width="88"
@@ -41,11 +43,12 @@ const VacancyList = () => {
               />
             </svg>
           </button>
+          </Link> 
         </div>
         <div className={style.main_itemvacancy}>
           <h2 className={style.main_titlevacancy}>User Acquisition Manager</h2>
-          <button className={style.button_itemvacancy} onClick={() => console.log('sdada')}>
-            Подробнее
+          <Link className={style.button_itemvacancy}  to='/aboutVacancy'><button className={style.button_itemvacancy}>
+          Подробнее
             <svg
               width="88"
               height="16"
@@ -59,6 +62,7 @@ const VacancyList = () => {
               />
             </svg>
           </button>
+          </Link> 
         </div>
       </div>
       <div className={style.main_buttondiv}>
