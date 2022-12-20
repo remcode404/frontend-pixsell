@@ -1,125 +1,101 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./GamesList.module.scss";
-import game1 from "./photos/game1.png";
-import game2 from "./photos/game2.png";
 import arrow2 from "./photos/Arrow2.svg";
-import game3 from "./photos/game3.png";
-import game4 from "./photos/game4.png";
-import { fetchGames } from "../../reducers/Slice/GamesList";
+import { fetchGames, setPage } from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ReactPaginate from "react-paginate";
+// import Pagination from "../../components/pagination";
 
 const GamesList = () => {
-  const deispatch = useDispatch();
+  const dispatch = useDispatch();
   const games = useSelector((state) => state.gameSlice.game);
   const error = useSelector((state) => state.gameSlice.error);
   const loadings = useSelector((state) => state.gameSlice.loading);
-console.log(loadings);
-  useEffect(() => {
-    deispatch(fetchGames());
-  }, [deispatch]);
+  const [page, setPage] = useState(1)
 
+//   const [carrentPage, setCarrentPage] = useState(0);
+//   const [countries, setContries] = useState([])
+// const [countriesPage] = useState(5)
 
+console.log(page)
+
+  useEffect(() => { 
+
+    dispatch
+(fetchGames(page));
+
+  }, [dispatch, page]);
 
   return (
     <div className={style.main}>
-  {loadings ? <div  className={style.custom_loader}></div>   : null} 
+      {loadings ? <div className={style.custom_loader}></div> : null}
       <div className={style.manLists}>
         {error ? <h1>{error}</h1> : null}
 
-        <div className={style.firstBlockData}>
-          <div className={style.firstBlock}>
-            <div className={style.description}>
-              <p className={style.title}>DESIGN MASTERS</p>
-              <p className={style.motivation}>Станьте дизайнером интерьеров!</p>
-              <p className={style.text}>
-                Проходите уровни матч-3, создавайте собственные дизайны и
-                интерьеры, следите за историей и знакомьтесь с персонажами.
-              </p>
-              <button className={style.btn}>
-                Подробнее
-                <img src={arrow2} alt="d" />
-              </button>
-            </div>
-          </div>
-          <div>
-            <img className={style.game1} src={game1} alt="a" />
-          </div>
-        </div>
-        {/* end */}
+        {games.map((item, index) => {
+          if (index % 2 === 0) {
+            return (
+              <div key={item._id} className={style.firstBlockData}>
+                <div className={style.firstBlock}>
+                  <div className={style.description}>
+                    <p className={style.title}>{item.name}</p>
+                    <p className={style.motivation}>{item.publisher}</p>
 
-        <div className={style.secondBlockData}>
-          <div>
-            <img className={style.game1} src={game2} alt="a" />
-          </div>
-          <div className={style.secondBlock}>
-            <div className={style.description}>
-              <p className={style.title}>Perfect Makeup 3D</p>
-              <p className={style.motivation}>
-                Добро пожаловать в мир макияжа!
-              </p>
-              <p className={style.text}>
-                Выбирайте кисти, цвета и оттенки губной помады, подводки для
-                глаз и пудры, чтобы добиться превосходного результата.
-              </p>
-              <button className={style.btn}>
-                Подробнее
-                <img src={arrow2} alt="d" />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* end */}
+                    <p className={style.text}>{item.description}</p>
+                    <button className={style.btn}>
+                      Подробнее
+                      <img src={arrow2} alt="d" />
+                    </button>
+                  </div>
+                  <div className={style.RoditelImg}>
+                    <img
+                      className={style.game1}
+                      src={`http://localhost:3001/${item.images[0]}`}
+                      alt="a"
+                    />
+                  </div>
+                </div>
+              </div>
+            );
+          } else if (index % 2 !== 0) {
+            return (
+              <div key={item._id} className={style.secondBlockData}>
+                <div className={style.RoditelImg}>
+                  <img
+                    className={style.game1}
+                    src={`http://localhost:3001/${item.images[0]}`}
+                    alt="a"
+                  />
+                </div>
+                <div className={style.secondBlock}>
+                  <div className={style.description}>
+                    <p className={style.title}>{item.name}</p>
+                    <p className={style.motivation}>{item.publisher}</p>
+                    <p className={style.text}>{item.description}</p>
+                    <button className={style.btn}>
+                      Подробнее
+                      <img src={arrow2} alt="d" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        })}
+<div>
 
-        <div className={style.firstBlockData}>
-          <div className={style.firstBlock}>
-            <div className={style.description}>
-              <p className={style.title}>Escape Masters</p>
-              <p className={style.motivation}>Совершите идеальный побег!</p>
-              <p className={style.text}>
-                Спаси напарников, собери сокровища и прокопай путь к свободе, но
-                опасайся ловушек.
-              </p>
-              <button className={style.btn}>
-                Подробнее
-                <img src={arrow2} alt="d" />
-              </button>
-            </div>
-          </div>
-          <div>
-            <img className={style.game1} src={game3} alt="a" />
-          </div>
-        </div>
-        {/* end */}
-
-        <div className={style.secondBlockData}>
-          <div>
-            <img className={style.game1} src={game4} alt="a" />
-          </div>
-          <div className={style.secondBlock}>
-            <div className={style.description}>
-              <p className={style.title}>Hitmasters</p>
-              <p className={style.motivation}>
-                Стань стрелком и срази всех врагов!
-              </p>
-              <p className={style.text}>
-                Целься метко, используй объекты на уровнях и не дай никому
-                спастись! Открывай новое оружие, пополняй свой арсенал и проходи
-                головоломки.
-              </p>
-              <button className={style.btn}>
-                Подробнее
-                <img src={arrow2} alt="d" />
-              </button>
-            </div>
-          </div>
-        </div>
-        {/* end */}
-
+  <button disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
+  <button disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
+</div>
         <div className={style.moreProjects}>
           <button className={style.btnMoreProjects}>Больше проектов</button>
         </div>
       </div>
+
+      {/* <div>
+        <Pagination onChangePage={(number) => setCarrentPage(number)} />
+      </div> */}
     </div>
   );
 };
