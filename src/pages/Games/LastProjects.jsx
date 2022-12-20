@@ -22,7 +22,7 @@ const LastProjects = () => {
         </div>
       </div>
       {/* end */}
-
+  
       <div className={style.firstBlockData}>
         <div className={style.firstBlock}>
           <img className={style.photo} src={photo1} alt="d" />
