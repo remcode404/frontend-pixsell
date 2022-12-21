@@ -11,8 +11,7 @@ export const fetchGames = createAsyncThunk(
   "fetch/games",
   async (page, thunkAPI) => {
     try {
-
-        const res = await fetch(`http://localhost:3001/games?page=${page}&limit=2`);
+        const res = await fetch(`http://localhost:3001/games?page=${page}&limit=${page && 2}`);
         const data = await res.json();
         return data;
       } catch (e) {

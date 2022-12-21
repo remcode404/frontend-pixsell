@@ -4,6 +4,8 @@ import arrow2 from "./photos/Arrow2.svg";
 import { fetchGames} from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 
 const GamesList = () => {
   const dispatch = useDispatch();
@@ -36,10 +38,12 @@ const GamesList = () => {
                     <p className={style.motivation}>{item.publisher}</p>
 
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                   <div className={style.RoditelImg}>
                     <img
@@ -66,10 +70,12 @@ const GamesList = () => {
                     <p className={style.title}>{item.name}</p>
                     <p className={style.motivation}>{item.publisher}</p>
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
