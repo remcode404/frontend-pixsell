@@ -10,12 +10,12 @@ const SocialNetwork = () => {
   return (
     <div>
        <div className={style.logos}>
-        <img className={style.icons} src={Plogo} alt="f" />
-        <img className={style.icons} src={Behance} alt="f" />
-        <img className={style.icons} src={inst} alt="f" />
-        <img className={style.icons} src={crugLogo} alt="f" />
-        <img className={style.icons} src={Snapchat} alt="f" />
-        <img className={style.icons} src={Facebook} alt="f" />
+     <a href='https://t.me/izn0795'>  <img className={style.icons} src={Plogo} alt="f" />  </a>  
+     <a href='https://t.me/izn0795'>   <img className={style.icons} src={Behance} alt="f" /></a>   
+     <a href='https://t.me/izn0795'>  <img className={style.icons} src={inst} alt="f" /></a>   
+     <a href='https://t.me/izn0795'><img className={style.icons} src={crugLogo} alt="f" /></a>     
+     <a href='https://t.me/izn0795'> <img className={style.icons} src={Snapchat} alt="f" /></a>    
+     <a href='https://t.me/izn0795'>  <img className={style.icons} src={Facebook} alt="f" /></a>   
       </div>
     </div>
   );

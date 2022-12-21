@@ -8,11 +8,12 @@ const Header = () => {
     <div className={style.header}>
       <div>
         <div className={style.toyStream}>
-          <img
+        <Link to='/'>   <img
             className={style.imgToyStream}
             src={toyStream}
             alt="фото header"
           />
+          </Link>
         </div>
       </div>
       <div className={style.textMenu}>
