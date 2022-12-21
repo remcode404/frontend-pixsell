@@ -14,12 +14,6 @@ const GamesList = () => {
   const loadings = useSelector((state) => state.gameSlice.loading);
   const [page, setPage] = useState(1)
 
-//   const [carrentPage, setCarrentPage] = useState(0);
-//   const [countries, setContries] = useState([])
-// const [countriesPage] = useState(5)
-
-console.log(page)
-
   useEffect(() => { 
 
     dispatch
@@ -83,10 +77,10 @@ console.log(page)
             );
           }
         })}
-<div>
+<div className={style.ButtonsPogination}>
 
-  <button disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
-  <button disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
+  <button className={style.BtnPogination} disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
+  <button className={style.BtnPogination} disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
 </div>
         <div className={style.moreProjects}>
           <button className={style.btnMoreProjects}>Больше проектов</button>
