@@ -5,6 +5,7 @@ import { fetchGames, setPage } from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ReactPaginate from "react-paginate";
+import { Link } from "react-router-dom";
 // import Pagination from "../../components/pagination";
 
 const GamesList = () => {
@@ -18,7 +19,7 @@ const GamesList = () => {
 //   const [countries, setContries] = useState([])
 // const [countriesPage] = useState(5)
 
-console.log(page)
+console.log(games)
 
   useEffect(() => { 
 
@@ -43,10 +44,12 @@ console.log(page)
                     <p className={style.motivation}>{item.publisher}</p>
 
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                   <div className={style.RoditelImg}>
                     <img
@@ -73,10 +76,12 @@ console.log(page)
                     <p className={style.title}>{item.name}</p>
                     <p className={style.motivation}>{item.publisher}</p>
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
