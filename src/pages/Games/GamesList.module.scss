@@ -198,6 +198,10 @@ background-color:  #ce0002 ;
 color: white;
 border: none;
 transition: 0.5s;
+&:disabled{
+opacity: 0.5;
+}
+
 
 &:hover{
 color: #ce0002;
