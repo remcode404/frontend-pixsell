@@ -2,17 +2,21 @@ import React from "react";
 import style from "./Header.module.scss";
 import toyStream from "./photos/toyStream.png";
 import { Link } from "react-router-dom";
+import IronMan from "./photos/ironman.gif";
 
 const Header = () => {
   return (
     <div className={style.header}>
       <div>
         <div className={style.toyStream}>
-          <img
-            className={style.imgToyStream}
-            src={toyStream}
-            alt="фото header"
-          />
+          <Link to="/">
+            {" "}
+            <img
+              className={style.imgToyStream}
+              src={toyStream}
+              alt="фото header"
+            />
+          </Link>
         </div>
       </div>
       <div className={style.textMenu}>
@@ -35,10 +39,15 @@ const Header = () => {
           <Link to="/contacts">
             <button className={style.BtnLink}>Контакты</button>
           </Link>
+          <Link to="/basket">
+            <button className={style.BtnLink}>Корзина</button>
+          </Link>
         </div>
 
         <div className={style.language}>
-          <p className={style.btnLangiage}>ENG</p>
+          <p className={style.btnLangiage}>
+            <img src={IronMan} alt="Железный Человек" />
+          </p>
         </div>
       </div>
     </div>
