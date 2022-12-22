@@ -31,7 +31,7 @@ const Enter = ({
     setRegistration(registration);
   };
 
-  const error = useSelector((state) => state.registration.error);
+  const error = useSelector((state) => state.registrationReducer.error);
 
   const dispatch = useDispatch();
 

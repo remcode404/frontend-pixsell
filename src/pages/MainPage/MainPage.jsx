@@ -12,9 +12,9 @@ const MainPage = () => {
           Мы создаем мобильные игры, в которые ты играешь
         </div>
         <div className={style.moreButton}>
-         <Link className={style.blockText}  to='/compain'>
-         <p className={style.blockText}>Узнать подробнее</p>
-         </Link> 
+          <Link className={style.blockText} to="/compain">
+            <p className={style.blockText}>Узнать подробнее</p>
+          </Link>
           <div className={style.arrowMore}>
             <img src={arrow} alt="Стрелка" />
           </div>

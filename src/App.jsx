@@ -13,6 +13,7 @@ import AboutGame from "./pages/Games/AboutGame";
 import Enter from "./components/Header/Enter/Enter";
 import { useState } from "react";
 
+
 function App() {
   const [enterWindow, setEnterWindow] = useState(false);
   const [registration, setRegistration] = useState(false);

@@ -1,11 +1,9 @@
 import React from "react";
 import style from "../Contacts/Contacts.module.scss";
 import { Map, Placemark, YMaps } from "react-yandex-maps";
-import placemarkIcon from '../Contacts/files/Frame.png'
+import placemarkIcon from "../Contacts/files/Frame.png";
 
 const Contacts = () => {
-
-
   return (
     <div className={style.contactsParent}>
       <div className={style.blockContacts}>
@@ -29,12 +27,14 @@ const Contacts = () => {
               zoom: 15,
             }}
           >
-            <Placemark defaultGeometry={[43.324675, 45.692376]} options={
-                {
-                  iconLayout: "default#image",
-                  iconImageHref: placemarkIcon,
-                  iconImageSize: [43.324675, 45.692376],
-                } }/>
+            <Placemark
+              defaultGeometry={[43.324675, 45.692376]}
+              options={{
+                iconLayout: "default#image",
+                iconImageHref: placemarkIcon,
+                iconImageSize: [43.324675, 45.692376],
+              }}
+            />
           </Map>
         </YMaps>
       </div>

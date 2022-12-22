@@ -22,13 +22,13 @@ const LastProjects = () => {
         </div>
       </div>
       {/* end */}
-  
+
       <div className={style.firstBlockData}>
         <div className={style.firstBlock}>
           <img className={style.photo} src={photo1} alt="d" />
           <div className={style.description}>
             <p className={style.name}>Escape Masters</p>
-            <p className={style.titleCard} >Совершите идеальный побег!</p>
+            <p className={style.titleCard}>Совершите идеальный побег!</p>
             <p className={style.text}>
               Спаси напарников, собери сокровища и прокопай путь к свободе, но
               опасайся ловушек, людей и Адама прочих усатых человеков
@@ -54,7 +54,6 @@ const LastProjects = () => {
               Подробнее
               <img className={style.arrow} src={arrow} alt="f" />
             </button>
-            
           </div>
         </div>
         <div className={style.firstBlock}>
