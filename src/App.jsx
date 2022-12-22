@@ -9,6 +9,8 @@ import { Route, Routes } from "react-router-dom";
 import VacancyMain from "./pages/Vacancy/VacancyMain";
 import AboutCompany from "./pages/AboutCompany/AboutCompany";
 import Registration from "./components/Header/Registration/Registration";
+import AboutGame from "./pages/Games/AboutGame";
+
 
 function App() {
   return (
@@ -21,7 +23,9 @@ function App() {
         <Route path="/career" element={<VacancyMain />} />
         <Route path="/contacts" element={<Contacts />} />
         <Route path="/aboutVacancy" element={<AboutVacancy />} />
-        <Route path='/registariton' element={<Registration/>}/>
+        <Route path='/registration' element={<Registration/>}/>
+        <Route path="/games/:gameId" element={<AboutGame />} />
+        <Route path="/enter" element={<Enter/>}/>
       </Routes>
       <Footer />
     </div>
