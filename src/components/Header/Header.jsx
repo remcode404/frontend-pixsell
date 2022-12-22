@@ -8,11 +8,13 @@ const Header = () => {
     <div className={style.header}>
       <div>
         <div className={style.toyStream}>
-        <Link to='/'>   <img
-            className={style.imgToyStream}
-            src={toyStream}
-            alt="фото header"
-          />
+          <Link to="/">
+            {" "}
+            <img
+              className={style.imgToyStream}
+              src={toyStream}
+              alt="фото header"
+            />
           </Link>
         </div>
       </div>

@@ -9,7 +9,6 @@ import Facebook from "./photos/facebook.svg";
 const Footer = () => {
   return (
     <div className={style.footer}>
-
       <div className={style.AdamInc}>
         <p className={style.incs}>@izn0795</p>
       </div>
@@ -35,11 +34,26 @@ const Footer = () => {
         </Link>
       </div>
       <div className={style.logos}>
-   <a href="https://t.me/evvelon"> <img className={style.icons} src={Plogo} alt="f" /></a>    
-   <a href="https://t.me/evvelon"> <img className={style.icons} src={Behance} alt="f" /></a>        
-   <a href="https://t.me/evvelon">    <img className={style.icons} src={crugLogo} alt="f" /></a>   
-   <a href="https://t.me/evvelon">  <img className={style.icons} src={Snapchat} alt="f" /></a>    
-   <a href="https://t.me/evvelon"> <img className={style.icons} src={Facebook} alt="f" /></a>    
+        <a href="https://t.me/evvelon">
+          {" "}
+          <img className={style.icons} src={Plogo} alt="f" />
+        </a>
+        <a href="https://t.me/evvelon">
+          {" "}
+          <img className={style.icons} src={Behance} alt="f" />
+        </a>
+        <a href="https://t.me/evvelon">
+          {" "}
+          <img className={style.icons} src={crugLogo} alt="f" />
+        </a>
+        <a href="https://t.me/evvelon">
+          {" "}
+          <img className={style.icons} src={Snapchat} alt="f" />
+        </a>
+        <a href="https://t.me/evvelon">
+          {" "}
+          <img className={style.icons} src={Facebook} alt="f" />
+        </a>
       </div>
     </div>
   );
