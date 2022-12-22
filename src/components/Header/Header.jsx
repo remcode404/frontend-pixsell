@@ -1,19 +1,36 @@
-import React from "react";
+import React, { useState } from "react";
 import style from "./Header.module.scss";
 import toyStream from "./photos/toyStream.png";
 import { Link } from "react-router-dom";
-import IronMan from './photos/ironman.gif'
+import IronMan from "./photos/output-onlinegiftools.gif";
+import Enter from "./Enter/Enter";
+import Registration from "./Registration/Registration";
 
-const Header = () => {
+const Header = ({
+  registration,
+  setRegistration,
+  enterWindow,
+  setEnterWindow,
+  
+}) => {
+
+
+
+  const handleClickRegistration = () => {
+    setRegistration(!registration);
+  };
+
   return (
     <div className={style.header}>
       <div>
         <div className={style.toyStream}>
-        <Link to='/'>   <img
-            className={style.imgToyStream}
-            src={toyStream}
-            alt="фото header"
-          />
+          <Link to="/">
+            {" "}
+            <img
+              className={style.imgToyStream}
+              src={toyStream}
+              alt="фото header"
+            />
           </Link>
         </div>
       </div>
@@ -39,9 +56,15 @@ const Header = () => {
           </Link>
         </div>
 
-        <div className={style.language}>
-          <p className={style.btnLangiage}><img src={IronMan} alt="Железный Человек" /></p>
-        </div>
+        <button
+          onClick={() => handleClickRegistration()}
+          className={style.language}
+        >
+    
+          <p className={style.btnLangiage}>
+            <img src={IronMan} alt="Железный Человек" />
+          </p>
+        </button>
       </div>
     </div>
   );

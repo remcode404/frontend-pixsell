@@ -66,19 +66,7 @@
       .btnLangiage img {
         width: 100px;
         height: 100px;
-        animation-duration: 10s;
-        animation-timing-function: cubic-bezier(.1, .1, .1, .100);
-        animation-name: slidein;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
       }
-
-      @keyframes slidein {
-        to {
-          margin-bottom: 50px;
-        }
-      }
-      
 
       @media screen and (max-width: 900px) {
         width: 80px;
