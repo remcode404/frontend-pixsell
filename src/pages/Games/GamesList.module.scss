@@ -183,32 +183,29 @@
     }
   }
 
+  .ButtonsPogination {
+    width: 220px;
+    height: 100px;
+    justify-content: space-between;
+    align-items: center;
+    display: flex;
+    position: absolute;
+    .BtnPogination {
+      width: 100px;
+      height: 40px;
+      background-color: #ce0002;
+      color: white;
+      border: none;
+      transition: 0.5s;
+      &:disabled {
+        opacity: 0.5;
+      }
 
-  .ButtonsPogination{
-  width: 220px;
-  height: 100px;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-  position: absolute;
-  .BtnPogination{
-  width: 100px;
-height: 40px;
-background-color:  #ce0002 ;
-color: white;
-border: none;
-transition: 0.5s;
-&:disabled{
-opacity: 0.5;
-}
-
-
-&:hover{
-color: #ce0002;
-background: none;
-border: 1px solid   #ce0002;
-
-}
-  }
+      &:hover {
+        color: #ce0002;
+        background: none;
+        border: 1px solid #ce0002;
+      }
+    }
   }
 }

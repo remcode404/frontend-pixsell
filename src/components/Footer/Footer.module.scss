@@ -6,27 +6,23 @@
   align-items: center;
   background-color: #efefef;
   margin-top: 60px;
-  
 
-
-
-.AdamInc{
-display: flex;
-align-items: center;
-justify-content: space-around;
-width: 10%;
-height: 100%;
-
-.incs{
+  .AdamInc {
     display: flex;
     align-items: center;
     justify-content: space-around;
-   margin-top: 15px;
+    width: 10%;
     height: 100%;
-    color: #7e7e7e;
-}
-}
 
+    .incs {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      margin-top: 15px;
+      height: 100%;
+      color: #7e7e7e;
+    }
+  }
 
   .links {
     width: 40%;
@@ -34,11 +30,11 @@ height: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-   .BtnLink{
-    color: #7e7e7e;
-    border: none;
-    background: none;
-}
+    .BtnLink {
+      color: #7e7e7e;
+      border: none;
+      background: none;
+    }
   }
 
   .logos {

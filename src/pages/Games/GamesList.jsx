@@ -1,25 +1,21 @@
 import React, { useState } from "react";
 import style from "./GamesList.module.scss";
 import arrow2 from "./photos/Arrow2.svg";
-import { fetchGames} from "../../reducers/Slice/GamesList";
+import { fetchGames } from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
 const GamesList = () => {
   const dispatch = useDispatch();
-  const games = useSelector((state) => state.gameSlice.game);
-  const error = useSelector((state) => state.gameSlice.error);
-  const loadings = useSelector((state) => state.gameSlice.loading);
+  const games = useSelector((state) => state.gameReducer.game);
+  const error = useSelector((state) => state.gameReducer.error);
+  const loadings = useSelector((state) => state.gameReducer.loading);
 
+  const [page, setPage] = useState(1);
 
-  const [page, setPage] = useState(1)
-
-  useEffect(() => { 
-    dispatch
-(fetchGames(page));
-
+  useEffect(() => {
+    dispatch(fetchGames(page));
   }, [dispatch, page]);
 
   return (
@@ -38,7 +34,10 @@ const GamesList = () => {
                     <p className={style.motivation}>{item.publisher}</p>
 
                     <p className={style.text}>{item.description}</p>
-                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                    <Link
+                      className="text-decoration-none"
+                      to={`/games/${item._id}`}
+                    >
                       <button className={style.btn}>
                         Подробнее
                         <img src={arrow2} alt="d" />
@@ -70,7 +69,10 @@ const GamesList = () => {
                     <p className={style.title}>{item.name}</p>
                     <p className={style.motivation}>{item.publisher}</p>
                     <p className={style.text}>{item.description}</p>
-                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                    <Link
+                      className="text-decoration-none"
+                      to={`/games/${item._id}`}
+                    >
                       <button className={style.btn}>
                         Подробнее
                         <img src={arrow2} alt="d" />
@@ -82,16 +84,28 @@ const GamesList = () => {
             );
           }
         })}
-<div className={style.ButtonsPogination}>
-
-  <button className={style.BtnPogination} disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
-  <button className={style.BtnPogination} disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
-</div>
+        <div className={style.ButtonsPogination}>
+          <button
+            className={style.BtnPogination}
+            disabled={page === 1}
+            onClick={() => setPage(page - 1)}
+          >
+            {" "}
+            назад{" "}
+          </button>
+          <button
+            className={style.BtnPogination}
+            disabled={page === 5}
+            onClick={() => setPage(page + 1)}
+          >
+            {" "}
+            вперед
+          </button>
+        </div>
         <div className={style.moreProjects}>
           <button className={style.btnMoreProjects}>Больше проектов</button>
         </div>
       </div>
-
     </div>
   );
 };
