@@ -1,27 +1,22 @@
 import React, { useState } from "react";
 import style from "./GamesList.module.scss";
 import arrow2 from "./photos/Arrow2.svg";
-import { fetchGames, setPage } from "../../reducers/Slice/GamesList";
+import { fetchGames} from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import ReactPaginate from "react-paginate";
-// import Pagination from "../../components/pagination";
+import { Link } from "react-router-dom";
 
 const GamesList = () => {
   const dispatch = useDispatch();
   const games = useSelector((state) => state.gameSlice.game);
   const error = useSelector((state) => state.gameSlice.error);
   const loadings = useSelector((state) => state.gameSlice.loading);
+
+
   const [page, setPage] = useState(1)
 
-//   const [carrentPage, setCarrentPage] = useState(0);
-//   const [countries, setContries] = useState([])
-// const [countriesPage] = useState(5)
-
-console.log(page)
-
   useEffect(() => { 
-
     dispatch
 (fetchGames(page));
 
@@ -43,10 +38,12 @@ console.log(page)
                     <p className={style.motivation}>{item.publisher}</p>
 
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                   <div className={style.RoditelImg}>
                     <img
@@ -73,29 +70,28 @@ console.log(page)
                     <p className={style.title}>{item.name}</p>
                     <p className={style.motivation}>{item.publisher}</p>
                     <p className={style.text}>{item.description}</p>
-                    <button className={style.btn}>
-                      Подробнее
-                      <img src={arrow2} alt="d" />
-                    </button>
+                    <Link className="text-decoration-none" to={`/games/${item._id}`}>
+                      <button className={style.btn}>
+                        Подробнее
+                        <img src={arrow2} alt="d" />
+                      </button>
+                    </Link>
                   </div>
                 </div>
               </div>
             );
           }
         })}
-<div>
+<div className={style.ButtonsPogination}>
 
-  <button disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
-  <button disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
+  <button className={style.BtnPogination} disabled={page === 1} onClick={() => setPage(page-1)}> назад </button>
+  <button className={style.BtnPogination} disabled={page === 5} onClick={() => setPage(page+1)} >  вперед</button>
 </div>
         <div className={style.moreProjects}>
           <button className={style.btnMoreProjects}>Больше проектов</button>
         </div>
       </div>
 
-      {/* <div>
-        <Pagination onChangePage={(number) => setCarrentPage(number)} />
-      </div> */}
     </div>
   );
 };

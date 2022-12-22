@@ -6,6 +6,7 @@ import img3 from "./files/Frame3.svg";
 import img4 from "./files/Frame4.svg";
 import SocialNetwork from "../../components/SocialNetwork/SocialNetwork";
 import OurTeam from '../OurTeam/OurTeam'
+
 const AboutCompany = () => {
   return (
     <div id="first" className={style.aboutAndOurTeam}> 
