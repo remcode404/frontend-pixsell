@@ -10,6 +10,7 @@ import VacancyMain from "./pages/Vacancy/VacancyMain";
 import AboutCompany from "./pages/AboutCompany/AboutCompany";
 import Registration from "./components/Header/Registration/Registration";
 import AboutGame from "./pages/Games/AboutGame";
+import Basket from "./pages/Basket/Basket";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
         <Route path="/aboutVacancy" element={<AboutVacancy />} />
         <Route path='/registariton' element={<Registration/>}/>
         <Route path="/games/:gameId" element={<AboutGame />} />
+        <Route path="/basket" element={<Basket />} />
       </Routes>
       <Footer />
     </div>
