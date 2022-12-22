@@ -2,6 +2,7 @@ import React from "react";
 import style from "./Header.module.scss";
 import toyStream from "./photos/toyStream.png";
 import { Link } from "react-router-dom";
+import IronMan from './photos/ironman.gif'
 
 const Header = () => {
   return (
@@ -39,7 +40,7 @@ const Header = () => {
         </div>
 
         <div className={style.language}>
-          <p className={style.btnLangiage}>ENG</p>
+          <p className={style.btnLangiage}><img src={IronMan} alt="Железный Человек" /></p>
         </div>
       </div>
     </div>
