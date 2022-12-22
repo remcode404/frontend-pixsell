@@ -54,6 +54,9 @@ const Header = ({
           <Link to="/contacts">
             <button className={style.BtnLink}>Контакты</button>
           </Link>
+          <Link to="/basket">
+            <button className={style.BtnLink}>Корзина</button>
+          </Link>
         </div>
 
         <button
@@ -65,6 +68,7 @@ const Header = ({
             <img src={IronMan} alt="Железный Человек" />
           </p>
         </button>
+
       </div>
     </div>
   );
