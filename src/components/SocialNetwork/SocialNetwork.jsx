@@ -6,6 +6,7 @@ import crugLogo from "../Footer/photos/crugLogo.svg";
 import Snapchat from "../Footer/photos/Snapchat.svg";
 import Facebook from "../Footer/photos/facebook.svg";
 import inst from '../../pages/Games/photos/in.svg'
+
 const SocialNetwork = () => {
   return (
     <div>

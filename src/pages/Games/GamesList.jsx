@@ -11,19 +11,17 @@ import { useEffect } from "react";
 
 const GamesList = () => {
   const deispatch = useDispatch();
-  const games = useSelector((state) => state.gameSlice.game);
+  // const games = useSelector((state) => state.gameSlice.game);
   const error = useSelector((state) => state.gameSlice.error);
   const loadings = useSelector((state) => state.gameSlice.loading);
-console.log(loadings);
+  console.log(loadings);
   useEffect(() => {
     deispatch(fetchGames());
   }, [deispatch]);
 
-
-
   return (
     <div className={style.main}>
-  {loadings ? <div  className={style.custom_loader}></div>   : null} 
+      {loadings ? <div className={style.custom_loader}></div> : null}
       <div className={style.manLists}>
         {error ? <h1>{error}</h1> : null}
 
