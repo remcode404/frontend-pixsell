@@ -33,7 +33,7 @@ function App() {
             registration={registration}
             setRegistration={setRegistration}
             enterWindow={enterWindow}
-            setEntryWindow={setEnterWindow}
+            setEnterWindow={setEnterWindow}
           />
         </div>
       ) : null}
@@ -41,7 +41,7 @@ function App() {
         <div className={style.enterWindow}>
           <Registration
             enterWindow={enterWindow}
-            setEntryWindow={setEnterWindow}
+            setEnterWindow={setEnterWindow}
             registration={registration}
             setRegistration={setRegistration}
           />

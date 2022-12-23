@@ -3,8 +3,6 @@ import style from "./Header.module.scss";
 import toyStream from "./photos/toyStream.png";
 import { Link } from "react-router-dom";
 import IronMan from "./photos/output-onlinegiftools.gif";
-import Enter from "./Enter/Enter";
-import Registration from "./Registration/Registration";
 
 const Header = ({
   registration,
