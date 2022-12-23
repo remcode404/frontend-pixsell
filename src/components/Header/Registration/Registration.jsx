@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
-import IconButton from "@material-ui/core/IconButton";
-import Visibility from "@material-ui/icons/Visibility";
-import InputAdornment from "@material-ui/core/InputAdornment";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
+import { useDispatch  } from "react-redux";
+
 import Input from "@material-ui/core/Input";
 import style from "../Registration/Registration.module.scss";
-import { Link } from "react-router-dom";
 import { authSignUp } from "../../../reducers/Slice/registrationSlice";
+import Visibility from "@material-ui/icons/Visibility";
+import InputAdornment from "@material-ui/core/InputAdornment";
+import IconButton from "@material-ui/core/IconButton";
+import VisibilityOff from "@material-ui/icons/VisibilityOff";
 
 const Registration = ({
   registration,

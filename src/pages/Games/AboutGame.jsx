@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from "../../reducers/Slice/GamesList";
 import { fetchPromos } from "../../reducers/Slice/PromoSlice";
+import { addBasket } from "../../reducers/Slice/basketSlice";
 
 const AboutGame = () => {
   const { gameId } = useParams();
@@ -19,17 +20,22 @@ const AboutGame = () => {
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-
+  
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
   }, [dispatch]);
 
+  const addToCart = () => {
+    dispatch(addBasket(gameId))
+  }
+
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
-  );
-
-  console.log(promos.map((item) => item.text).join(""));
+    );
+    //  console.log(game.price);
+// console.log(promos)
+  // console.log(promos.map((item) => item.text).join(""));
   if (!game) {
     return "Loading...";
   }
@@ -87,7 +93,7 @@ const AboutGame = () => {
               <div>{game?.price}</div>
             )}
           </p>
-          <button className={style.but_buy}>Купить</button>
+          <button onClick={() => addToCart()} className={style.but_buy}>Добавить в корзину</button>
         </div>
       </div>
 
