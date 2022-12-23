@@ -11,10 +11,10 @@ const Contacts = () => {
           <b className={style.textContacts}>КОНТАКТЫ</b>
         </div>
         <div className={style.phone}>
-          <b>+7 (925) 807 89 79</b>
+          <b>+7 (928) 648 07 17</b>
         </div>
-        <div className={style.textEmail}>AdamTsurov123@gmail.com</div>
-        <div className={style.address}>Technopark Adamo, Grozny</div>
+        <div className={style.textEmail}>Abdrazakov393@gmail.com</div>
+        <div className={style.address}>Technopark Evelon, Grozny</div>
       </div>
 
       <div className={style.YMap}>

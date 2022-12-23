@@ -12,7 +12,7 @@ import Registration from "./components/Header/Registration/Registration";
 import AboutGame from "./pages/Games/AboutGame";
 import Enter from "./components/Header/Enter/Enter";
 import { useState } from "react";
-import Basket from "./pages/Basket/Basket";
+// import Basket from "./pages/Basket/Basket";
 
 
 function App() {
@@ -105,7 +105,7 @@ function App() {
           }
         />
         <Route
-          path="/aboutVacancy"
+          path="/aboutVacancy/:id"
           element={
             <AboutVacancy
               enterWindow={enterWindow}
