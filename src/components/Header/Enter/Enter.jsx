@@ -6,8 +6,9 @@ import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 import style from "../Enter/Enter.module.scss";
 import { Link } from "react-router-dom";
-import { authSignIn } from "../../../reducers/Slice/registrationSlice";
+// import { authSignIn } from "../../../reducers/Slice/registrationSlice";
 import { useDispatch, useSelector } from "react-redux";
+import { authSignIn } from "../../../reducers/Slice/registrationSlice";
 
 const Enter = ({
   registration,
