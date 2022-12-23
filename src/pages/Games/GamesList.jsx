@@ -1,13 +1,15 @@
 import React, { useState } from "react";
 import style from "./GamesList.module.scss";
 import arrow2 from "./photos/Arrow2.svg";
-import { fetchGames } from "../../reducers/Slice/GamesList";
+import { fetchGames} from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
+import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
 const GamesList = () => {
   const dispatch = useDispatch();
+
   const games = useSelector((state) => state.gameReducer.game);
   const error = useSelector((state) => state.gameReducer.error);
   const loadings = useSelector((state) => state.gameReducer.loading);
