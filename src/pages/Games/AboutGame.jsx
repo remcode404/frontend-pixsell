@@ -19,17 +19,18 @@ const AboutGame = () => {
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-
+  
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
   }, [dispatch]);
-
+  
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
-  );
-
-  console.log(promos.map((item) => item.text).join(""));
+    );
+    //  console.log(game.price);
+// console.log(promos)
+  // console.log(promos.map((item) => item.text).join(""));
   if (!game) {
     return "Loading...";
   }
