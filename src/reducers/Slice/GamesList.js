@@ -8,44 +8,45 @@ const initialState = {
 
 export const fetchGames = createAsyncThunk(
   "fetch/games",
-  async (_, thunkAPI) => {
+  async (page, thunkAPI) => {
     try {
-        const res = await fetch(`http://localhost:3001/games`);
-        const data = await res.json();
-
-        return data;
-      } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
-      }
+      const res = await fetch(
+        `http://localhost:3001/games?page=${page}&limit=${page && 2}`
+      );
+      const data = await res.json();
+      return data;
+    } catch (e) {
+      return thunkAPI.rejectWithValue(e.message);
+    }
   }
 );
 
-
 export const gameSlice = createSlice({
-name: "fetchGame",
-initialState,
-reducers: {},
+  name: "fetchGame",
+  initialState,
+  reducers: {
+    setPage(state, action) {
+      state.page = action.payload;
+    },
+  },
 
-extraReducers: (builder) => {
-builder
-.addCase(fetchGames.rejected, (state, action) => {
-state.error = action.payload
-state.loading = false
-})
-.addCase(fetchGames.fulfilled, (state, action) => {
-state.game = action.payload
-state.loading = false
+  extraReducers: (builder) => {
+    builder
+      .addCase(fetchGames.rejected, (state, action) => {
+        state.error = action.payload;
+        state.loading = false;
+      })
+      .addCase(fetchGames.fulfilled, (state, action) => {
+        state.game = action.payload;
+        // console.log(action.payload);
 
-})
-.addCase(fetchGames.pending, (state, action) => {
-    state.loading = true
+        state.loading = false;
+      })
+      .addCase(fetchGames.pending, (state, action) => {
+        state.loading = true;
+      });
+  },
+});
+export const { setPage } = gameSlice.actions;
 
-    })
-
-
-
-}
-})
-
-
-export default gameSlice.reducer
+export default gameSlice.reducer;

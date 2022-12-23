@@ -23,7 +23,9 @@ const OurTeam = () => {
             <div className={style.cards}>
               <div className={style.card}>
                 <img className={style.photo} src={photo3} alt="Асхьаб" />
-                <div className={style.name}>Бычок <br /> Асхьаб</div>
+                <div className={style.name}>
+                  Бычок <br /> Асхьаб
+                </div>
                 <div className={style.post}>Сын маминой подруги</div>
                 <div className={style.quote}>
                   Цитата: <br />
@@ -64,7 +66,10 @@ const OurTeam = () => {
               <div className={style.card}>
                 <img className={style.photo} src={photo2} alt="Изновр" />
                 <div className={style.name}>Изнаур Жинкин</div>
-                <div className={style.post}>Покоритель <br />женских сердец</div>
+                <div className={style.post}>
+                  Покоритель <br />
+                  женских сердец
+                </div>
                 <div className={style.quote}>
                   Цитата: <br />
                   «Седа доьхьал г1ойла хьо!»

@@ -1,5 +1,4 @@
 import React from "react";
-// import { Link } from "react-router-dom";
 import style from "./VacancyList.module.scss";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";

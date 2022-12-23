@@ -4,7 +4,6 @@ const initialState = {
   vacancy: [],
   error: null,
   loading: false,
-  
 };
 
 export const fetchVacancy = createAsyncThunk(
@@ -13,7 +12,6 @@ export const fetchVacancy = createAsyncThunk(
     try {
       const res = await fetch(`http://localhost:3001/vacancy`);
       const data = await res.json();
-
       return data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);

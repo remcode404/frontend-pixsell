@@ -13,8 +13,6 @@ const MainPageGame = () => {
   ];
   const [sideBarItems, setSideBarItems] = useState(0);
 
-  
-
   return (
     <div id="mainPage" className={style.main}>
       <div className={style.sectionOne}>
@@ -49,7 +47,7 @@ const MainPageGame = () => {
         <ul className={style.sidebar_list}>
           {arr.map((item, index) => (
             <li
-            key={index}
+              key={index}
               onClick={() => setSideBarItems(index)}
               className={style.sidebar_items}
             >
@@ -57,13 +55,17 @@ const MainPageGame = () => {
                 {item.text}
               </a>
               <span
-
                 className={
                   sideBarItems === index
                     ? `${style.sidebar_square}`
                     : `${style.sideBarTrue}`
                 }
-              > <a className={style.spanAHref} href={"#" + item.id}>O</a> </span>
+              >
+                {" "}
+                <a className={style.spanAHref} href={"#" + item.id}>
+                  O
+                </a>{" "}
+              </span>
             </li>
           ))}
         </ul>
