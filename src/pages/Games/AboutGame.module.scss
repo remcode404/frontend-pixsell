@@ -43,8 +43,15 @@
       padding: 0.5% 0;
       .price_game {
         margin: 0;
+
+        .game_price {
+          color: white;
+        }
       }
       .but_buy {
+        background: none;
+        color: white;
+        border: none;
       }
     }
   }

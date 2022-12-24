@@ -20,21 +20,21 @@ const AboutGame = () => {
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-  
+
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
   }, [dispatch]);
 
   const addToCart = () => {
-    dispatch(addBasket(gameId))
-  }
+    dispatch(addBasket(gameId));
+  };
 
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
-    );
-    //  console.log(game.price);
-// console.log(promos)
+  );
+  //  console.log(game.price);
+  // console.log(promos)
   // console.log(promos.map((item) => item.text).join(""));
   if (!game) {
     return "Loading...";
@@ -83,17 +83,19 @@ const AboutGame = () => {
         <div className={style.buy}>
           <p className={style.price_game}>
             {promoText === promos.map((item) => item.text).join("") ? (
-              <div>
+              <div className={style.game_price}>
                 {Math.floor(
                   game?.price -
                     (game?.price / 100) * promos.map((item) => item.discount)[0]
                 )}
               </div>
             ) : (
-              <div>{game?.price}</div>
+              <div className={style.game_price}>{game?.price}</div>
             )}
           </p>
-          <button onClick={() => addToCart()} className={style.but_buy}>Добавить в корзину</button>
+          <button onClick={() => addToCart()} className={style.but_buy}>
+            Добавить в корзину
+          </button>
         </div>
       </div>
 
