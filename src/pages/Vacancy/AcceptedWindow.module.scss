@@ -1,0 +1,63 @@
+.parendDiv {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  z-index: 1;
+  background-color:rgba(0,0,0,.85);
+  left: 0;
+
+  .divWindow {
+    width: 35%;
+    height: 40vh;
+    display: grid;
+    justify-content: center;
+    align-content: space-between;
+    background-color: white;
+    margin-bottom: 6%;
+
+    .X {
+      width: 100%;
+      display: flex;
+      justify-content: flex-end;
+      align-items: flex-start;
+
+      .btnX {
+        font-size: 28px;
+        color: black;
+        font-weight: 600;
+        cursor: pointer;
+        border: none;
+        background-color: white;
+      }
+    }
+
+    .logo {
+      display: flex;
+      justify-content: center;
+
+      .imgLogo {
+        width: 70px;
+        height: 80px;
+      }
+    }
+
+    .textB {
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 50px;
+      color: #000000;
+      text-align: center;
+    }
+
+    .textMini {
+      font-weight: 500;
+      font-size: 20px;
+      line-height: 25px;
+      color: #000000;
+      padding-bottom: 50px;
+    }
+  }
+}

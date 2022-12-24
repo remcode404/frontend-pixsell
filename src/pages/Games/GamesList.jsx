@@ -4,7 +4,6 @@ import arrow2 from "./photos/Arrow2.svg";
 import { fetchGames} from "../../reducers/Slice/GamesList";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
-import ReactPaginate from "react-paginate";
 import { Link } from "react-router-dom";
 
 const GamesList = () => {
@@ -13,7 +12,7 @@ const GamesList = () => {
   const games = useSelector((state) => state.gameReducer.game);
   const error = useSelector((state) => state.gameReducer.error);
   const loadings = useSelector((state) => state.gameReducer.loading);
-
+console.log(games);
   const [page, setPage] = useState(1);
 
   useEffect(() => {

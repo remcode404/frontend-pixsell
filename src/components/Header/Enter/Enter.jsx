@@ -5,8 +5,6 @@ import InputAdornment from "@material-ui/core/InputAdornment";
 import VisibilityOff from "@material-ui/icons/VisibilityOff";
 import Input from "@material-ui/core/Input";
 import style from "../Enter/Enter.module.scss";
-import { Link } from "react-router-dom";
-// import { authSignIn } from "../../../reducers/Slice/registrationSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { authSignIn } from "../../../reducers/Slice/registrationSlice";
 
@@ -24,12 +22,12 @@ const Enter = ({
   });
 
   const handleEnter = () => {
-    setEnterWindow(!enterWindow);
+    setEnterWindow(false);
   };
 
   const handleRegistration = () => {
-    setEnterWindow(!enterWindow);
-    setRegistration(registration);
+    setEnterWindow(false);
+    setRegistration(true);
   };
 
   const error = useSelector((state) => state.registrationReducer.error);
@@ -66,7 +64,6 @@ const Enter = ({
     }
     console.log(error);
   };
-//dsdsd
   return (
     <div>
       <div className={style.mainDiv}>
@@ -102,16 +99,17 @@ const Enter = ({
                 }
               />
             </div>
+            <div className={style.enterButtonDiv}>
+              <button onClick={() => handleRegistration()}>
+                Зарегистрироваться
+              </button>
+              <button type="submit">Войти</button>
+            </div>
           </form>
-          <div className={style.enterButtonDiv}>
-            <button onClick={() => handleRegistration()}>
-              Зарегистрироваться
-            </button>
-            <button type="submit">Войти</button>
-          </div>
         </div>
       </div>
     </div>
+    //dfd
   );
 };
 

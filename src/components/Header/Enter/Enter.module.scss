@@ -1,5 +1,6 @@
 .mainDiv {
-  position: relative;
+  z-index: +1;
+  position: absolute;
   left: 1000px;
   top: 100px;
   background-image: url(./images/pixsell-dialog1.png);
@@ -13,6 +14,9 @@
     align-items: center;
     position: relative;
     top: 130px;
+    button{
+      border: none;
+  }
     .registrationTitle {
       margin: 10px 0px 30px;
       font-size: 20px;
@@ -50,6 +54,7 @@
   .enterButtonDiv {
     display: flex;
     flex-direction: column;
+    height: 30px;
     align-items: center;
     button {
       margin-top: 15px;
