@@ -13,6 +13,7 @@ import AboutGame from "./pages/Games/AboutGame";
 import Enter from "./components/Header/Enter/Enter";
 import { useState } from "react";
 import PersonalAccountWindow from "./components/Header/PersonalAccount/PersonalAccountWindow";
+import Basket from "./pages/Basket/Basket";
 // import Basket from "./pages/Basket/Basket";
 
 function App() {
@@ -119,6 +120,17 @@ function App() {
           path="/games/:gameId"
           element={
             <AboutGame
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/basket"
+          element={
+            <Basket
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}

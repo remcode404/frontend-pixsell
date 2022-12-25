@@ -2,10 +2,9 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   favorite: [],
-   token: localStorage.getItem("token"),
+  token: localStorage.getItem("token"),
   loading: false,
   error: null,
-  favorites: [],
 };
 
 export const fetchFavorite = createAsyncThunk(
@@ -23,20 +22,17 @@ export const fetchFavorite = createAsyncThunk(
 
 export const saveGames = createAsyncThunk(
   "patch/users",
-  async (favorites, thunkAPI) => {
+  async ({ gameId, id }, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/users/games`, {
+      await fetch(`http://localhost:3001/users/games/${id}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
-           Authorization: `Bearer ${initialState.token}`,
+          Authorization: `Bearer ${initialState.token}`,
         },
-        body: JSON.stringify({ favorites }),
+        body: JSON.stringify({ favorites: gameId }),
       });
-      const data = await res.json();
-      console.log(data);
-    
-      return data;
+      return  {gameId, id}
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -49,13 +45,15 @@ const favoriteSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder
-    .addCase(saveGames.fulfilled, (state, action) => {
-      state.favorite.push(action.payload);
-    state.favorites = action.payload
-
-    })
-
+    builder.addCase(saveGames.fulfilled, (state, action) => {
+      state.favorite = state.favorite.map((item) => {
+        if (item._id === action.payload.id) {
+          item.favorite.push(action.payload.gameId);
+          return item;
+        }
+        return item;
+      });
+    });
   },
 });
 
