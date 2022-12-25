@@ -48,7 +48,7 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
 
 export const addBasket = createAsyncThunk(
   "basket/add",
-  async ({id, price} , thunkAPI) => {
+  async (id , thunkAPI) => {
     console.log(initialState.token)
     console.log(id);
     try {
@@ -58,7 +58,7 @@ export const addBasket = createAsyncThunk(
           "Content-type": "application/json",
          Authorization: `Bearer ${initialState.token}`,
         },
-        body: JSON.stringify({ product: { productId: id, price } }),
+        body: JSON.stringify({ product: { productId: id } }),
       });
       const data = await res.json();
       if (data.error) {

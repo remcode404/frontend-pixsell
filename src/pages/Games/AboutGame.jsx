@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import style from './AboutGame.module.scss';
 import { Carousel } from 'react-bootstrap';
@@ -5,8 +6,10 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReviews, fetchGames } from '../../reducers/Slice/GamesList';
 import { fetchPromos } from '../../reducers/Slice/PromoSlice';
-import { addBasket } from '../../reducers/Slice/basketSlice';
+import { addBasket, removeBasket } from '../../reducers/Slice/basketSlice';
 import { fetchUsersName, isExistence, printReviews } from '../../reducers/Slice/reviewSlice';
+import { fetchFavorite, saveGames } from '../../reducers/Slice/favoriteSlice';
+
 
 const AboutGame = () => {
   const { gameId } = useParams();
@@ -20,13 +23,14 @@ const AboutGame = () => {
   const [isGrade, setIsGrade] = useState(null);
 
   const promos = useSelector((state) => state.promoReducer.promo);
+
   const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
   const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
 
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-
+  
 
   console.log(isExistenceReview);
 
@@ -35,11 +39,25 @@ const AboutGame = () => {
     dispatch(fetchPromos());
     dispatch(printReviews());
     dispatch(isExistence());
+    dispatch(fetchFavorite())
   }, [dispatch, isExistenceReview]);
+
 
   const addToCart = () => {
     dispatch(addBasket(gameId));
   };
+
+  const favorites = useSelector((state) => state.favoriteReducer.favorites)
+
+ console.log(favorites);
+
+  const addToFavorite = () => {
+  dispatch(saveGames(game._id))
+  }
+
+
+
+
 
   const handleAddReview = () => {
     if(!isExistence) {
@@ -51,11 +69,12 @@ const AboutGame = () => {
   //  console.log(game.price);
   // console.log(promos)
   // console.log(promos.map((item) => item.text).join(""));
+
   if (!game) {
     return 'Loading...';
   }
 
-  console.log(game.reviews);
+  
 
   return (
     <div className={style.about_game}>
@@ -85,7 +104,7 @@ const AboutGame = () => {
             className={style.input_cupon}
             type="text"
           />
-          <button onClick={handleTextPromo}>ввести</button>
+          {/* <button onClick={handleTextPromo}>ввести</button> */}
           {validPromo && <div>OK</div>}
           {validPromo === undefined && <div>NULL</div>}
         </div>
@@ -99,12 +118,15 @@ const AboutGame = () => {
                 )}
               </div>
             ) : (
-              <div>{game?.price}</div>
+              <div className={style.game_price}>{game?.price}</div>
             )}
           </p>
           <button onClick={() => addToCart()} className={style.but_buy}>
             Добавить в корзину
           </button>
+
+          <button onClick={() => addToFavorite()}>добавить в избранное</button>
+
         </div>
       </div>
 
