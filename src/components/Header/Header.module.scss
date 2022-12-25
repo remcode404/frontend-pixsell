@@ -21,7 +21,7 @@
 
   .textMenu {
     display: flex;
-    width: 50%;
+    width: 55%;
     height: 100%;
     align-items: center;
     .links {
@@ -31,7 +31,20 @@
       align-items: center;
       justify-content: space-around;
       width: 86%;
-      // margin-right: 50px;
+      margin-right: 50px;
+
+      .basket {
+        width: 40px;
+        // border: 1px solid black;
+        padding: 5px;
+        border: none;
+        &:hover {
+          // background-color: crimson;
+          stroke: white;
+          fill: #ff0000;
+        }
+      }
+
       .BtnLink {
         background: none;
         border: none;
@@ -67,6 +80,17 @@
       .btnLangiage img {
         width: 100px;
         height: 100px;
+        animation-duration: 10s;
+        animation-timing-function: cubic-bezier(0.1, 0.1, 0.1, 0.1);
+        animation-name: slidein;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+      }
+
+      @keyframes slidein {
+        to {
+          margin-bottom: 50px;
+        }
       }
 
       @media screen and (max-width: 900px) {
