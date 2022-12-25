@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { fetchGames } from "../../reducers/Slice/GamesList";
 import { fetchPromos } from "../../reducers/Slice/PromoSlice";
 import { addBasket } from "../../reducers/Slice/basketSlice";
+import { fetchFavorite, saveGames } from "../../reducers/Slice/favoriteSlice";
 
 const AboutGame = () => {
   const { gameId } = useParams();
@@ -16,26 +17,34 @@ const AboutGame = () => {
   const [validPromoPrice, setValidPromoPrice] = useState(null);
 
   const promos = useSelector((state) => state.promoReducer.promo);
-
-  const handleTextPromo = () => {
-    setValidPromo(promos.find((item) => item.text === promoText));
-  };
-
+  // const handleTextPromo = () => {
+  //   setValidPromo(promos.find((item) => item.text === promoText));
+  // };
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
+    dispatch(saveGames());
+    dispatch(fetchFavorite())
   }, [dispatch]);
 
   const addToCart = () => {
     dispatch(addBasket(gameId));
   };
 
+  
+  const favorites = useSelector((state) => state.favoriteReducer.favorites)
+
+ console.log(favorites);
+
+  const addToFavorite = () => {
+  dispatch(saveGames(gameId))
+  }
+
+
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
   );
-  //  console.log(game.price);
-  // console.log(promos)
-  // console.log(promos.map((item) => item.text).join(""));
+
   if (!game) {
     return "Loading...";
   }
@@ -75,7 +84,7 @@ const AboutGame = () => {
             className={style.input_cupon}
             type="text"
           />
-          <button onClick={handleTextPromo}>ввести</button>
+          {/* <button onClick={handleTextPromo}>ввести</button> */}
           {validPromo && <div>OK</div>}
           {validPromo === undefined && <div>NULL</div>}
         </div>
@@ -96,6 +105,7 @@ const AboutGame = () => {
           <button onClick={() => addToCart()} className={style.but_buy}>
             Добавить в корзину
           </button>
+          <button onClick={() => addToFavorite()}>добавить в избранное</button>
         </div>
       </div>
 
