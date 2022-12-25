@@ -41,12 +41,10 @@ const MainPageVacancy = () => {
         <img className={style.light} src={light} alt="light" />
         <ul className={style.sidebar_list}>
           {arr.map((item, index) => (
-            <li className={style.sidebar_items}>
-              <a
-                onClick={() => setSideBarItems(index)}
-                className={style.aHrefs}
-                href={"#" + item.id}
-              >
+
+            <li  className={style.sidebar_items} key={index}>
+              <a onClick={() => setSideBarItems(index)} className={style.aHrefs} href={'#' + item.id}>
+
                 {item.text}
               </a>
               <span

@@ -20,7 +20,7 @@ const AboutGame = () => {
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-
+  
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
@@ -28,6 +28,7 @@ const AboutGame = () => {
 
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
+
   );
   const addToCart = () => {
     dispatch(addBasket({id: gameId, price: game.price}))
@@ -120,14 +121,3 @@ const AboutGame = () => {
 };
 
 export default AboutGame;
-{
-  /* <div className={style.buy}>
-          <p className={style.price_game}>{promos.map((item) => item.text) === promoText ?<div>{game?.price}</div> :  <div>{(game?.price / 100) * promos.map((item) => item.discount[0])}</div>   }</p>
-          <button className={style.but_buy}>Купить</button>
-        </div> */
-}
-
-//   <div className={style.buy}>
-//   <p className={style.price_game}>{game?.price} р.</p>
-//   <button className={style.but_buy}>Купить</button>
-// </div>

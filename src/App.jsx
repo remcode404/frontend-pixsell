@@ -1,4 +1,4 @@
-import "./App.scss";
+import style from "./App.scss";
 import Contacts from "./pages/Contacts/Contacts";
 import MainPage from "./pages/MainPage/MainPage";
 import Footer from "./components/Footer/Footer";
@@ -10,22 +10,136 @@ import VacancyMain from "./pages/Vacancy/VacancyMain";
 import AboutCompany from "./pages/AboutCompany/AboutCompany";
 import Registration from "./components/Header/Registration/Registration";
 import AboutGame from "./pages/Games/AboutGame";
+import Enter from "./components/Header/Enter/Enter";
+import { useState } from "react";
+import PersonalAccountWindow from "./components/Header/PersonalAccount/PersonalAccountWindow";
 import Basket from "./pages/Basket/Basket";
+// import Basket from "./pages/Basket/Basket";
 
 function App() {
+  const [enterWindow, setEnterWindow] = useState(false);
+  const [registration, setRegistration] = useState(false);
+
   return (
-    <div className="app">
-      <Header />
+    <div className={style.app}>
+      <Header
+        enterWindow={enterWindow}
+        setEnterWindow={setEnterWindow}
+        registration={registration}
+        setRegistration={setRegistration}
+      />
+      {enterWindow ? (
+        <div className={style.enterWindow}>
+          {" "}
+          <Enter
+            registration={registration}
+            setRegistration={setRegistration}
+            enterWindow={enterWindow}
+            setEnterWindow={setEnterWindow}
+          />
+        </div>
+      ) : null}
+      {registration ? (
+        <div className={style.enterWindow}>
+          <Registration
+            enterWindow={enterWindow}
+            setEnterWindow={setEnterWindow}
+            registration={registration}
+            setRegistration={setRegistration}
+          />
+        </div>
+      ) : null}
       <Routes>
-        <Route path="/" element={<MainPage />} />
-        <Route path="/games" element={<GamePages />} />
-        <Route path="/compain" element={<AboutCompany />} />
-        <Route path="/career" element={<VacancyMain />} />
-        <Route path="/contacts" element={<Contacts />} />
-        <Route path="/aboutVacancy" element={<AboutVacancy />} />
-        <Route path='/registariton' element={<Registration/>}/>
-        <Route path="/games/:gameId" element={<AboutGame />} />
-        <Route path="/basket" element={<Basket />} />
+        <Route
+          path="/"
+          element={
+            <MainPage
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/games"
+          element={
+            <GamePages
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/compain"
+          element={
+            <AboutCompany
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/career"
+          element={
+            <VacancyMain
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/contacts"
+          element={
+            <Contacts
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/aboutVacancy/:id"
+          element={
+            <AboutVacancy
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/games/:gameId"
+          element={
+            <AboutGame
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+        <Route
+          path="/basket"
+          element={
+            <Basket
+              enterWindow={enterWindow}
+              setEnterWindow={setEnterWindow}
+              registration={registration}
+              setRegistration={setRegistration}
+            />
+          }
+        />
+
+        <Route path="/account" element={<PersonalAccountWindow />} />
       </Routes>
       <Footer />
     </div>

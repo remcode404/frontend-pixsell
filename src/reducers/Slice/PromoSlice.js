@@ -24,6 +24,7 @@ export const promoSclice = createSlice({
   extraReducers: (builder) => {
     builder.addCase(fetchPromos.fulfilled, (state, action) => {
       state.promo = action.payload;
+    console.log(action.payload);
     });
   },
 });

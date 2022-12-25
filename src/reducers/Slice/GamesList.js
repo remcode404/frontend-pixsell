@@ -38,6 +38,7 @@ export const gameSlice = createSlice({
       })
       .addCase(fetchGames.fulfilled, (state, action) => {
         state.game = action.payload;
+        // console.log(action.payload);
 
         state.loading = false;
       })

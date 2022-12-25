@@ -1,0 +1,120 @@
+.mainDiv {
+  z-index: +1;
+  position: absolute;
+  left: 1000px;
+  top: 100px;
+  background-image: url(./images/pixsell-dialog1.png);
+  background-size: 450px 450px;
+  height: 599px;
+  width: 450px;
+  background-repeat: no-repeat;
+  .accountMainDiv {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    top: 130px;
+  }
+  .logOutWindow {
+    cursor: pointer;
+    button {
+      border: none;
+      color: rgb(0, 0, 0);
+      background: rgb(226, 226, 226);
+      transition: 0.5s;
+      margin-bottom: 15px;
+      &:hover {
+        background: #ff0000 url(./images/pixel.png);
+        transition-delay: 0.8s;
+        animation: animate 0.8s steps(15) forwards;
+      }
+      @keyframes animate {
+        0% {
+          background-position-y: 0;
+        }
+        100% {
+          background-position-y: -480px;
+        }
+      }
+    }
+  }
+  .userName {
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+  }
+  .walletDiv {
+    font-size: 15px;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    button {
+      cursor: pointer;
+      border: none;
+      color: rgb(0, 0, 0);
+      background: rgb(226, 226, 226);
+      transition: 0.5s;
+      height: 30px;
+      &:hover {
+        background: #ff0000 url(./images/pixel.png);
+        transition-delay: 0.8s;
+        animation: animate 0.8s steps(15) forwards;
+      }
+      @keyframes animate {
+        0% {
+          background-position-y: 0;
+        }
+        100% {
+          background-position-y: -480px;
+        }
+      }
+    }
+  }
+  .myGamesButton {
+    button {
+      cursor: pointer;
+      border: none;
+      color: rgb(0, 0, 0);
+      background: rgb(226, 226, 226);
+      transition: 0.5s;
+      height: 30px;
+      margin-bottom: 15px;
+      &:hover {
+        background: #ff0000 url(./images/pixel.png);
+        transition-delay: 0.8s;
+        animation: animate 0.8s steps(15) forwards;
+      }
+      @keyframes animate {
+        0% {
+          background-position-y: 0;
+        }
+        100% {
+          background-position-y: -480px;
+        }
+      }
+    }
+  }
+  .logOutButton {
+    button {
+      cursor: pointer;
+      border: none;
+      color: rgb(0, 0, 0);
+      background: rgb(226, 226, 226);
+      transition: 0.5s;
+      height: 30px;
+      margin-bottom: 15px;
+      &:hover {
+        background: #ff0000 url(./images/pixel.png);
+        transition-delay: 0.8s;
+        animation: animate 0.8s steps(15) forwards;
+      }
+      @keyframes animate {
+        0% {
+          background-position-y: 0;
+        }
+        100% {
+          background-position-y: -480px;
+        }
+      }
+    }
+  }
+}
