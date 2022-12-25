@@ -1,14 +1,14 @@
-import React, { useState } from 'react';
-import SocialNetwork from '../../components/SocialNetwork/SocialNetwork';
-import style from './MainPageVacancy.module.scss';
-import light from './images/main-light.png';
-import arrow from './images/Arrow.svg';
+import React, { useState } from "react";
+import SocialNetwork from "../../components/SocialNetwork/SocialNetwork";
+import style from "./MainPageVacancy.module.scss";
+import light from "./images/main-light.png";
+import arrow from "./images/Arrow.svg";
 
 const MainPageVacancy = () => {
   const arr = [
-    { text: 'Карьера', id: 'mainPageVacancy' },
-    { text: 'Вакансии', id: 'main_vacancy' },
-    { text: 'Последние проекты', id: 'mainJoboBenefits' },
+    { text: "Карьера", id: "mainPageVacancy" },
+    { text: "Вакансии", id: "main_vacancy" },
+    { text: "Последние проекты", id: "mainJoboBenefits" },
   ];
   const [sideBarItems, setSideBarItems] = useState(0);
 
@@ -24,8 +24,8 @@ const MainPageVacancy = () => {
         <div className={style.deskriptionDevelopers}>
           <p className={style.game}>Карьера в Toy.Stream</p>
           <p className={style.text}>
-            Мы всегда рады новым высококлассным специалистам геймдева, желающим присоединиться к
-            нашей команде.
+            Мы всегда рады новым высококлассным специалистам геймдева, желающим
+            присоединиться к нашей команде.
           </p>
           <div>
             <a className={style.AOurWorks} href="#main_vacancy">
@@ -41,14 +41,19 @@ const MainPageVacancy = () => {
         <img className={style.light} src={light} alt="light" />
         <ul className={style.sidebar_list}>
           {arr.map((item, index) => (
-            <li  className={style.sidebar_items}>
+
+            <li  className={style.sidebar_items} key={index}>
               <a onClick={() => setSideBarItems(index)} className={style.aHrefs} href={'#' + item.id}>
+
                 {item.text}
               </a>
               <span
                 className={
-                  sideBarItems === index ? `${style.sidebar_square}` : `${style.sideBarTrue}`
-                }></span>
+                  sideBarItems === index
+                    ? `${style.sidebar_square}`
+                    : `${style.sideBarTrue}`
+                }
+              ></span>
             </li>
           ))}
         </ul>

@@ -1,7 +1,7 @@
 .main {
   display: flex;
   width: 100%;
-  height:84vh;
+  height: 84vh;
 
   .sectionOne {
     width: 45%;
@@ -51,18 +51,17 @@
       .AOurWorks {
         text-decoration: none;
         .BtnOurWorks {
-        width: 150px;
-        text-align: left;
-        background-color: #ce0002;
-        color: white;
-        border: none;
-        height: 60px;
-        display: flex;
-        justify-content: space-around;
-        align-items: center;
+          width: 150px;
+          text-align: left;
+          background-color: #ce0002;
+          color: white;
+          border: none;
+          height: 60px;
+          display: flex;
+          justify-content: space-around;
+          align-items: center;
+        }
       }
-      }
-      
     }
   }
 
@@ -102,7 +101,7 @@
           color: #686868;
         }
         .sidebar_square {
-          background-color:  #CE0002;
+          background-color: #ce0002;
           width: 15px;
           height: 15px;
           margin-left: 7px;
@@ -111,7 +110,7 @@
           width: 15px;
           height: 15px;
           margin-left: 7px;
-          background-color:  #686868; 
+          background-color: #686868;
           outline: 0;
         }
       }
