@@ -19,9 +19,9 @@ export const printReviews = createAsyncThunk('fetch/reviews', async (_, thunkAPI
   }
 });
 
-export const isExistence = createAsyncThunk('existence/reviews', async (_, thunkAPI) => {
+export const isExistence = createAsyncThunk('existence/reviews', async ({id}, thunkAPI) => {
   try {
-    const res = await fetch(`http://localhost:3001/reviews/isexistence`,{
+    const res = await fetch(`http://localhost:3001/reviews/isexistence/${id}`,{
       headers: {
         'Authorization' :`Bearer ${localStorage.getItem('token')}`
       }

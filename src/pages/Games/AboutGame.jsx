@@ -22,27 +22,56 @@ const AboutGame = () => {
   const promos = useSelector((state) => state.promoReducer.promo);
   const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
   const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
-
+  
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
 
 
-  console.log(isExistenceReview);
+
+  const getGrade = () => {
+    const grade = game?.reviews.map(review => {
+      if(review.isPositiveGrade === true) {
+        return review = true 
+      }
+      return review = false
+    })
+    const likes = grade?.filter(function(value){return value}).length;
+    const dislikes = grade?.filter((item) => item === false).length;
+
+    const p = Math.floor((likes / (likes + dislikes)) * 100);
+    
+    if(p<=20) {
+      return 'В основном отрицательные';
+    }
+    else if(p <= 40) {
+      return 'Отрицательные';
+    }else if(p > 40 && p <= 50){
+      return 'Средние';
+    }else if(p > 50 && p <=70) {
+      return 'Положительные';
+    }else if(p > 70 ) {
+      return 'В основном положительные';
+    }
+  }
+
+  
+
 
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
     dispatch(printReviews());
-    dispatch(isExistence());
   }, [dispatch, isExistenceReview]);
+
 
   const addToCart = () => {
     dispatch(addBasket(gameId));
   };
 
   const handleAddReview = () => {
-    if(!isExistence) {
+    dispatch(isExistence({id: game._id}));
+    if(!isExistenceReview) {
       dispatch(addReviews({ id: game._id, textReview: textReview, isGrade: isGrade }));
     }
     setIsGrade(null);
@@ -67,7 +96,7 @@ const AboutGame = () => {
         <div className={style.information_game}>
           <h1 className={style.name_game}>{game?.name}</h1>
 
-          <p className={style.all_reviews}>Все обзоры: Очень положительные (всего {game.reviews.length})</p>
+          <p className={style.all_reviews}>Все обзоры: {getGrade()} (всего {game.reviews.length})</p>
           <p className={style.date}>ДАТА ВЫХОДА: {game?.date}</p>
           <p className={style.publisher_game}>ИЗДАТЕЛЬ: {game?.publisher}</p>
           <p className={style.genre_game}>Жанр: {game?.genres.join(', ')}</p>
