@@ -2,6 +2,7 @@
   width: 90%;
   margin: 0 auto;
   padding-top: 5%;
+  
   .card_information {
     background-color: #ffea2f;
     display: flex;
@@ -9,6 +10,8 @@
     align-items: center;
     margin-top: 5%;
     padding: 5% 0;
+    color:#ce0002;
+    text-transform: uppercase; 
     .img_game {
       // width: 50%;
 
@@ -52,8 +55,154 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-around;
     .description_game {
-      padding: 0 13%;
+      padding: 2% 13%;
+      font-size: 19px;
+      color:#ce0002;
+    }
+  }
+  .window_reviews {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: #ffea2f;
+    width: 90vw;
+    .add_review {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-evenly;
+      align-items: center;
+      margin: 0 auto;
+      margin-top: 2%;
+      height: 50vh;
+      .input_review {
+        .title_review {
+          font-size: 25px;
+          color: #ce0002;
+        }
+        .input {
+          width: 35vw;
+          height: 25vh;
+          resize: none;
+          overflow: hidden;
+          background-color: #e7d531;
+          color: #e00105;
+          font-size: 20px;
+          outline: none;
+          transition: 0.2s;
+          &:focus {
+            transform: scale(1.1);
+          }
+        }
+      }
+      .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 10%;
+        margin-top: 2%;
+        .like_btn {
+          border: 2px solid white;
+          color: #ce0002;
+          background-color: transparent;
+          transition: 0.3s;
+          &:hover {
+            background-color: rgb(0, 202, 0);
+            color: white;
+            transform: scale(1.1);
+            svg {
+              path {
+                fill:white;
+              }
+            }
+          }
+          &:active {
+            background-color: rgb(1, 169, 1);
+            transform: scale(0.9);
+          }
+        }
+        .dislike_btn {
+          border: 2px solid white;
+          color: #ce0002;
+          background-color: transparent;
+          transition: 0.3s;
+          &:hover {
+            background-color: rgb(255, 22, 22);
+            color: white;
+            transform: scale(1.1);
+            svg {
+              path {
+                fill:white;
+              }
+            }
+          }
+          &:active {
+            background-color: rgb(211, 7, 7);
+            transform: scale(0.9);
+          }
+        }
+      }
+      .submit_review {
+        width: 43%;
+        margin-top: 3%;
+        border: 2px solid white;
+        color: #ce0002;
+        background-color: transparent;
+        transition: 0.3s;
+        &:hover {
+          background-color: #ce0002;
+          color: white;
+          transform: scale(1.1);
+        }
+        &:active {
+          background-color: #b50003;
+          transform: scale(0.9);
+        }
+      }
+    }
+    .text_title_reviews {
+      color: #ce0002;
+      padding-left: 7.5%;
+      margin-top: 3%;
+    }
+    .print_reviews {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 100%;
+      gap: 5%;
+      margin-top: 2%;
+      .one_review {
+        margin-bottom: 5%;
+        width: 25%;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid #ffffff;
+        background-color: wheat;
+        transition: 0.15s ease-in-out;
+        &:hover {
+          transform: scale(1.1);
+        }
+        .grade_review_userName {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          gap: 4%;
+          padding-left: 2%;
+          .user_name {
+            width: 100%;
+            margin: 0;
+            background-color: #ce0002;
+            color: #ffea2f;
+            font-size: 25px;
+          }
+        }
+        .text_review {
+          padding: 2% 5%;
+          border-bottom: 15px auto rgb(211, 211, 211);
+          color: #ce0002;
+        }
+      }
     }
   }
 }
