@@ -26,13 +26,13 @@ const AboutGame = () => {
     dispatch(fetchPromos());
   }, [dispatch]);
 
-  const addToCart = () => {
-    dispatch(addBasket(gameId))
-  }
-
   const game = useSelector((state) => state.gameReducer.game).find(
     (item) => item._id === gameId
   );
+  const addToCart = () => {
+    dispatch(addBasket({id: gameId, price: game.price}))
+  }
+
 
   console.log(promos.map((item) => item.text).join(""));
   if (!game) {

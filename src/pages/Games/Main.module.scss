@@ -4,7 +4,7 @@
   height: 100vh;
 
   .sectionOne {
-    width: 50%;
+    width: 45%;
     height: 85%;
     display: flex;
     align-items: center;
@@ -51,7 +51,7 @@
 
   .sectionTwo {
     background-color: #ffee2f;
-    width: 50%;
+    width: 55%;
     display: flex;
     align-items: flex-end;
     justify-content: center;
@@ -59,12 +59,12 @@
     height: 85%;
 
     .adamPhoto {
-      width: 30%;
-      height: 70%;
+      width: 35%;
+      height: 65%;
       display: flex;
       align-items: flex-start;
       justify-content: center;
-      margin-bottom: 30px;
+      margin-bottom: 100px;
     }
 
     .sidebar_list {
