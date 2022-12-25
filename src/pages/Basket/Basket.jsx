@@ -1,43 +1,61 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import BasketCart from "./BasketCart";
+// import BasketCart from "./BasketCart";
 import { getBasket } from "../../reducers/Slice/basketSlice";
-import styles from "../Basket/Basket.module.scss";
 import { fetchGames } from "../../reducers/Slice/GamesList";
+import styles from "../Basket/Basket.module.scss";
 
 const Basket = () => {
   const dispatch = useDispatch();
 
-
   const basket = useSelector((state) => state.basketReducer.basket);
   const products = useSelector((state) => state.gameReducer.game);
 
-console.log(products)
+  console.log(products);
 
   useEffect(() => {
     dispatch(getBasket());
-    dispatch(fetchGames())
+    dispatch(fetchGames());
   }, [dispatch]);
 
+  const totalPrice = basket?.products?.reduce((acc, item) => {
+    return acc + item?.price;
+  }, 0);
 
   ////////////////////////////
   return (
-    <div className="CART">
-        {basket?.products?.map(bask => {
-            return products?.map(prod => {
-                if (bask.productId === prod._id) {
-                    return (
-                        <div style={{display: 'flex', width: "500px", justifyContent: "space-between", margin: "20px"}}>
-                            <div>
-                                <img width={"100px"} src={`http://localhost:3001/${prod.images[0]}`} alt="" />
-                            </div>
-                            <div>{prod.name}</div>
-                            <div>{prod.price}</div>
-                        </div>
-                    )
-                }
-            })
-        })}
+    <div className={styles.mainParent}>
+      {basket?.products?.map((bask) => {
+        return products?.map((prod) => {
+          if (bask.productId === prod._id) {
+            return (
+              <div className={styles.mainBlock}>
+                <div className={styles.prodList}>
+                  <div className={styles.product}>
+                    <div className={styles.image}>
+                      <img
+                        src={`http://localhost:3001/${prod.images[0]}`}
+                        alt=""
+                      />
+                    </div>
+                    <div className={styles.prodName}>
+                      <div className={styles.gameName}>Название</div>
+                      <div className={styles.name}>{prod.name}</div>
+                    </div>
+                    <div className={styles.prodPrice}>
+                      <div className={styles.gamePrice}>Стоимость</div>
+                      <div className={styles.price}>{prod.price} ₽</div>
+                    </div>
+                    <button className={styles.delBtn}>X</button>
+                  </div>
+                </div>
+              </div>
+            );
+          }
+        });
+      })}
+      {/* <div className={styles.total}>Итого: {totalPrice} ₽</div> */}
+      <div className={styles.total} id="box">Итого: {totalPrice} ₽</div>
     </div>
   );
 };
