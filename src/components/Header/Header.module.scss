@@ -84,18 +84,6 @@
         width: 100px;
         height: 100px;
 
-        animation-duration: 10s;
-        animation-timing-function: cubic-bezier(0.1, 0.1, 0.1, 0.1);
-        animation-name: slidein;
-        animation-iteration-count: infinite;
-        animation-direction: alternate;
-      }
-
-      @keyframes slidein {
-        to {
-          margin-bottom: 50px;
-        }
-
       }
 
       @media screen and (max-width: 900px) {

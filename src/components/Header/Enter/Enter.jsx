@@ -13,6 +13,8 @@ const Enter = ({
   setRegistration,
   enterWindow,
   setEnterWindow,
+  accountWindow,
+  setAccountWindow,
 }) => {
   const [password, setPassword] = useState("");
   const [value, setValue] = useState("");
@@ -20,6 +22,8 @@ const Enter = ({
     password: "",
     showPassword: false,
   });
+
+  
 
   const handleEnter = () => {
     setEnterWindow(false);
@@ -29,6 +33,12 @@ const Enter = ({
     setEnterWindow(false);
     setRegistration(true);
   };
+
+  const handleEnterAccount = () => {
+    // setEnterWindow(false);
+    setAccountWindow(true);
+  };
+  
 
   const error = useSelector((state) => state.registrationReducer.error);
 
@@ -103,13 +113,14 @@ const Enter = ({
               <button onClick={() => handleRegistration()}>
                 Зарегистрироваться
               </button>
-              <button type="submit">Войти</button>
+              <button type="submit" onClick={() => handleEnterAccount()} >
+                Войти
+              </button>
             </div>
           </form>
         </div>
       </div>
     </div>
-    //dfd
   );
 };
 
