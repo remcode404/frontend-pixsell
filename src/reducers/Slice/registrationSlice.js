@@ -20,7 +20,8 @@ const initialState = {
   signIn: false,
   token: localStorage.getItem("token"),
   id: localStorage.getItem("id"),
-  userID: parseJwt(localStorage.getItem("token"))
+  userID: parseJwt(localStorage.getItem("token")),
+  users: []
 
 };
 
@@ -48,6 +49,32 @@ export const authSignUp = createAsyncThunk(
   }
 );
 
+
+export const addMoney = createAsyncThunk(
+  "user/add-money",
+  async (walletAmount, thunkAPI) => {
+    console.log(walletAmount);
+    try {
+      const res = await fetch("http://localhost:3001/users/walley", {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${initialState.token}`,
+        },
+        body: JSON.stringify(walletAmount),
+      });
+      const json = await res.json();
+      console.log("JSON",json);
+      if (json.error) {
+        return thunkAPI.rejectWithValue(json.error);
+      }
+      return json;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 export const authSignIn = createAsyncThunk(
   "auth/signin",
   async ({ nickName, email, password }, thunkAPI) => {
@@ -67,6 +94,20 @@ export const authSignIn = createAsyncThunk(
       localStorage.setItem("id", token.id);
 
       return token;
+    } catch (error) {
+      thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
+export const getUsers = createAsyncThunk(
+  "users/fetch",
+  async (_, thunkAPI) => {
+    try {
+      const res = await fetch("http://localhost:3001/users")
+      const users = await res.json();
+     
+      return users;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
     }
@@ -101,7 +142,13 @@ const registrationSlice = createSlice({
         state.signIn = false;
         state.error = null;
         state.token = action.payload;
-      });
+      })
+      .addCase(addMoney.fulfilled, (state, action) => {
+        state.userID.wallet = action.payload.walletAmount
+      })
+      .addCase(getUsers.fulfilled, (state, action) => {
+        state.users = action.payload
+      })
   },
 });
 
