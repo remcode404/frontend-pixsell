@@ -44,10 +44,10 @@ const AboutVacancy = () => {
     e.preventDefault();
     dispatch(postResponse({text, text1, text2, text3}));
     console.log(text, text1, text2, text3);
-    // setText("");
-    // setText1("");
-    // setText2("");
-    // setText3("");
+    setText("");
+    setText1("");
+    setText2("");
+    setText3("");
   };
 
 
