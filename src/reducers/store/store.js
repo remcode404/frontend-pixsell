@@ -4,6 +4,7 @@ import gameSlice from "../Slice/GamesList";
 import vacancySlice from "../Slice/vacancySlice";
 import registration from "../Slice/registrationSlice"
 import promoSclice from "../Slice/PromoSlice";
+import responseSlice from "../Slice/responseSlice";
 
 
 export const store = configureStore({
@@ -12,7 +13,8 @@ export const store = configureStore({
    promoReducer:  promoSclice,
    registrationReducer: registration,
    basketReducer: basketSlice,
-   vacancySlice
+   vacancySlice,
+   responseReducer: responseSlice,
   },
 });
 
