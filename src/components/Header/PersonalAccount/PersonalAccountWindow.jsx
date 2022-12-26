@@ -1,24 +1,40 @@
 import React, { useState } from "react";
 import style from "../PersonalAccount/PersonalAccountWindow.module.scss";
 
-const PersonalAccountWindow = () => {
+const PersonalAccountWindow = ({
+  registration,
+  setRegistration,
+  enterWindow,
+  setEnterWindow,
+  accountWindow,
+  setAccountWindow,
+}) => {
+  const handleEnter = () => {
+    setAccountWindow(false);
+  };
+
+
+  const logout = () => {
+    localStorage.clear();
+    window.location.href = "/";
+  };
   return (
     <div>
       <div className={style.mainDiv}>
         <div className={style.accountMainDiv}>
           <div className={style.logOutWindow}>
-            <button>X</button>
+            <button onClick={() => handleEnter()}>X</button>
           </div>
           <div className={style.userName}>Добро пожаловать: </div>
           <div className={style.walletDiv}>
-            <p>Сумма в кошельке: р. </p>
+            <p>Сумма в кошельке: 2000р. </p>
             <button>Пополнение кошелька</button>
           </div>
           <div className={style.myGamesButton}>
             <button>Мои игры</button>
           </div>
           <div className={style.logOutButton}>
-            <button>Выход из аккаунта</button>
+            <button onClick={logout}>Выход из аккаунта</button>
           </div>
         </div>
       </div>

@@ -4,15 +4,25 @@ import toyStream from "./photos/toyStream.png";
 import { Link } from "react-router-dom";
 import IronMan from "./photos/output-onlinegiftools.gif";
 import { ReactComponent as Basket } from "./files/Basket.svg";
+import { useSelector } from "react-redux";
 
 const Header = ({
   registration,
   setRegistration,
   enterWindow,
   setEnterWindow,
+  accountWindow,
+  setAccountWindow,
 }) => {
+  const token = useSelector((state) => state.registrationReducer.token);
+
   const handleClickRegistration = () => {
-    setRegistration(!registration);
+    if (!token) {
+      setEnterWindow(false);
+      setRegistration(true);
+    } else {
+      setAccountWindow(true);
+    }
   };
 
   return (
@@ -20,7 +30,6 @@ const Header = ({
       <div>
         <div className={style.toyStream}>
           <Link to="/">
-            {" "}
             <img
               className={style.imgToyStream}
               src={toyStream}
@@ -50,7 +59,9 @@ const Header = ({
             <button className={style.BtnLink}>Контакты</button>
           </Link>
           <Link to="/basket">
-            <button className={style.BtnLink}> <Basket className={style.basket} />
+            <button className={style.BtnLink}>
+              {" "}
+              <Basket className={style.basket} />
               {/* <img className={style.basket} src={Basket} alt="" /> */}
             </button>
           </Link>
