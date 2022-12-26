@@ -4,6 +4,7 @@ import gameSlice from "../Slice/GamesList";
 import vacancySlice from "../Slice/vacancySlice";
 import registration from "../Slice/registrationSlice";
 import promoSclice from "../Slice/PromoSlice";
+import responseSlice from "../Slice/responseSlice";
 import reviewSlice from "../Slice/reviewSlice";
 import favoriteSlice from "../Slice/favoriteSlice";
 
