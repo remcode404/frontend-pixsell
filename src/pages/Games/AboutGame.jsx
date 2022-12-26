@@ -38,7 +38,7 @@ const AboutGame = () => {
   }, [dispatch, isExistenceReview]);
 
   const addToCart = () => {
-    dispatch(addBasket(gameId));
+    dispatch(addBasket({id: gameId, price: game.price}));
   };
 
   const handleAddReview = () => {
@@ -201,7 +201,7 @@ const AboutGame = () => {
                       </svg>
                     )}
 
-                    <h2 className={style.user_name}>{reviewItem.userId.nickName}</h2>
+                    <h2 className={style.user_name}>{reviewItem.userId?.nickName}</h2>
                   </div>
                   <p className={style.text_review}>{reviewItem.text}</p>
                 </div>
