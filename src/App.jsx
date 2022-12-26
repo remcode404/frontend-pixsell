@@ -19,10 +19,13 @@ import Basket from "./pages/Basket/Basket";
 function App() {
   const [enterWindow, setEnterWindow] = useState(false);
   const [registration, setRegistration] = useState(false);
+  const [accountWindow, setAccountWindow] = useState(false);
 
   return (
     <div className={style.app}>
       <Header
+        setAccountWindow={setAccountWindow}
+        accountWindow={setEnterWindow}
         enterWindow={enterWindow}
         setEnterWindow={setEnterWindow}
         registration={registration}
@@ -30,8 +33,9 @@ function App() {
       />
       {enterWindow ? (
         <div className={style.enterWindow}>
-          {" "}
           <Enter
+            setAccountWindow={setAccountWindow}
+            accountWindow={setEnterWindow}
             registration={registration}
             setRegistration={setRegistration}
             enterWindow={enterWindow}
@@ -42,6 +46,20 @@ function App() {
       {registration ? (
         <div className={style.enterWindow}>
           <Registration
+            setAccountWindow={setAccountWindow}
+            accountWindow={setEnterWindow}
+            enterWindow={enterWindow}
+            setEnterWindow={setEnterWindow}
+            registration={registration}
+            setRegistration={setRegistration}
+          />
+        </div>
+      ) : null}
+      {accountWindow ? (
+        <div className={style.setAccountWindow}>
+          <PersonalAccountWindow
+            setAccountWindow={setAccountWindow}
+            accountWindow={setEnterWindow}
             enterWindow={enterWindow}
             setEnterWindow={setEnterWindow}
             registration={registration}
@@ -54,6 +72,8 @@ function App() {
           path="/"
           element={
             <MainPage
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -65,6 +85,8 @@ function App() {
           path="/games"
           element={
             <GamePages
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -76,6 +98,8 @@ function App() {
           path="/compain"
           element={
             <AboutCompany
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -87,6 +111,8 @@ function App() {
           path="/career"
           element={
             <VacancyMain
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -98,6 +124,8 @@ function App() {
           path="/contacts"
           element={
             <Contacts
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -109,6 +137,8 @@ function App() {
           path="/aboutVacancy/:id"
           element={
             <AboutVacancy
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -120,6 +150,8 @@ function App() {
           path="/games/:gameId"
           element={
             <AboutGame
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -131,6 +163,8 @@ function App() {
           path="/basket"
           element={
             <Basket
+              setAccountWindow={setAccountWindow}
+              accountWindow={setEnterWindow}
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
