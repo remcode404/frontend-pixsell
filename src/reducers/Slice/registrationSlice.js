@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
 function parseJwt (token) {
+  if(token) {
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
@@ -8,6 +10,7 @@ function parseJwt (token) {
   }).join(''));
 
   return JSON.parse(jsonPayload);
+}
 };
 
 
@@ -16,7 +19,9 @@ const initialState = {
   signUp: false,
   signIn: false,
   token: localStorage.getItem("token"),
+  id: localStorage.getItem("id"),
   userID: parseJwt(localStorage.getItem("token"))
+
 };
 
 export const authSignUp = createAsyncThunk(
@@ -58,7 +63,9 @@ export const authSignIn = createAsyncThunk(
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("id", token.id);
+
       return token;
     } catch (error) {
       thunkAPI.rejectWithValue(error);

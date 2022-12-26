@@ -35,11 +35,11 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
       headers: { Authorization: `Bearer ${initialState.token}` },
     });
     const basket = await res.json();
-
+console.log(basket);
     if (basket.error) {
       return thunkAPI.rejectWithValue(basket.error);
     }
-    console.log(basket);
+   
     return thunkAPI.fulfillWithValue(basket);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -49,8 +49,7 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
 export const addBasket = createAsyncThunk(
   "basket/add",
   async (id , thunkAPI) => {
-    console.log(initialState.token)
-    console.log(id);
+ 
     try {
       const res = await fetch(`http://localhost:3001/basket`, {
         method: "PATCH",
@@ -95,7 +94,6 @@ const cartSlice = createSlice({
 
   extraReducers: (builder) => {
     builder.addCase(addBasket.fulfilled, (state, action) => {
-      console.log(action.payload);
       state.basket.products.push({
         productId: action.payload,
         amount: 1,
