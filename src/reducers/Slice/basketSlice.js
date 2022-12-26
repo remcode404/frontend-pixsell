@@ -48,6 +48,7 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
 export const addBasket = createAsyncThunk(
   "basket/add",
   async ({ id, price }, thunkAPI) => {
+
     try {
       const res = await fetch(`http://localhost:3001/basket`, {
         method: "PATCH",
@@ -55,10 +56,9 @@ export const addBasket = createAsyncThunk(
           "Content-type": "application/json",
           Authorization: `Bearer ${initialState.token}`,
         },
-        body: JSON.stringify({ product: { productId: id, price } }),
+        body: JSON.stringify({ product: { productId: id, price: price } }),
       });
       const data = await res.json();
-      console.log("DATA", data)
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       }

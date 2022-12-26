@@ -98,142 +98,148 @@
   .blockRespond {
     height: 500px;
     width: 75%;
-    display: grid;
+    display: flex;
 
-    .centerBlockRespond {
+    .forms {
+      height: 500px;
+      width: 100%;
       display: grid;
-      align-content: space-around;
 
-      .titleRespond {
-        color: black;
-        font-weight: 600;
-        font-size: 60px;
-        line-height: 75px;
-      }
-
-      .blockInp1 {
-        display: flex;
-        justify-content: space-between;
-
-        input {
-          width: 340px;
-          height: 40px;
-          border: none;
-          border-bottom: 2px solid #9c9c9c;
-
-          &::placeholder {
-            font-size: 20px;
-          }
+      .centerBlockRespond {
+        display: grid;
+        align-content: space-around;
+  
+        .titleRespond {
+          color: black;
+          font-weight: 600;
+          font-size: 60px;
+          line-height: 75px;
         }
-      }
-
-      .blockInp2 {
-        display: flex;
-        justify-content: space-between;
-
-        .inp22 {
+  
+        .blockInp1 {
           display: flex;
           justify-content: space-between;
-          width: 340px;
-          height: 40px;
-          border-bottom: 2px solid #9c9c9c;
-
-          .textInpFile {
-            position: relative;
-            font-size: 20px;
-            color: grey;
-          }
-
-          .fa {
-            font-size: 40px !important;
-            color: grey;
-            cursor: pointer;
-          }
-
-          .inpScrepka {
-            display: flex;
-            justify-content: flex-end;
-            width: 335px;
-            position: absolute;
-            padding-right: 5px;
-            font-weight: 600;
-            color: grey;
-            font-size: 25px;
-            cursor: pointer;
-          }
-        }
-
-        input {
-          width: 340px;
-          height: 40px;
-          border: none;
-          border-bottom: 2px solid #9c9c9c;
-
-          &::placeholder {
-            font-size: 20px;
-          }
-        }
-      }
-
-      .lastDiv {
-        display: flex;
-        justify-content: space-between;
-        width: 70%;
-
-        .btnSend {
-          width: 170px;
-          height: 90px;
-          background: #ce0002;
-          border: none;
-          color: white;
-
-          .sendText {
-            font-size: 22px;
-            font-weight: 500;
-            line-height: 20px;
-          }
-
-          .svg {
-            margin-top: 10px;
-            transform: rotate(-180deg);
-          }
-        }
-
-        .blockCheckbox {
-          display: flex;
-          align-items: center;
-          gap: 30px;
-
-          .checkbox {
-            width: 40px;
+  
+          input {
+            width: 340px;
             height: 40px;
-            background-color: #bababa;
             border: none;
-            cursor: pointer;
-          }
-
-          .textCheckbox {
-            font-weight: 400;
-            font-size: 24px;
-            line-height: 30px;
+            border-bottom: 2px solid #9c9c9c;
+  
+            &::placeholder {
+              font-size: 20px;
+            }
           }
         }
-
-        .btnUpMain {
-          position: fixed;
-          right: 2%;
-          bottom: 10%;
-          border: none;
-          background-color: black;
-          color: white;
-          width: 4%;
-          height: 8%;
+  
+        .blockInp2 {
           display: flex;
-          justify-content: center;
-          align-items: flex-end;
-          padding-bottom: 10px;
+          justify-content: space-between;
+  
+          .inp22 {
+            display: flex;
+            justify-content: space-between;
+            width: 340px;
+            height: 40px;
+            border-bottom: 2px solid #9c9c9c;
+  
+            .textInpFile {
+              position: relative;
+              font-size: 20px;
+              color: grey;
+            }
+  
+            .fa {
+              font-size: 40px !important;
+              color: grey;
+              cursor: pointer;
+            }
+  
+            .inpScrepka {
+              display: flex;
+              justify-content: flex-end;
+              width: 335px;
+              position: absolute;
+              padding-right: 5px;
+              font-weight: 600;
+              color: grey;
+              font-size: 25px;
+              cursor: pointer;
+            }
+          }
+  
+          input {
+            width: 340px;
+            height: 40px;
+            border: none;
+            border-bottom: 2px solid #9c9c9c;
+  
+            &::placeholder {
+              font-size: 20px;
+            }
+          }
+        }
+  
+        .lastDiv {
+          display: flex;
+          justify-content: space-between;
+          width: 70%;
+  
+          .btnSend {
+            width: 170px;
+            height: 90px;
+            background: #ce0002;
+            border: none;
+            color: white;
+  
+            .sendText {
+              font-size: 22px;
+              font-weight: 500;
+              line-height: 20px;
+            }
+  
+            .svg {
+              margin-top: 10px;
+              transform: rotate(-180deg);
+            }
+          }
+  
+          .blockCheckbox {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+  
+            .checkbox {
+              width: 40px;
+              height: 40px;
+              background-color: #bababa;
+              border: none;
+              cursor: pointer;
+            }
+  
+            .textCheckbox {
+              font-weight: 400;
+              font-size: 24px;
+              line-height: 30px;
+            }
+          }
         }
       }
+    }
+
+    .btnUpMain {
+      position: fixed;
+      right: 2%;
+      bottom: 10%;
+      border: none;
+      background-color: black;
+      color: white;
+      width: 4%;
+      height: 8%;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      padding-bottom: 10px;
     }
   }
 }

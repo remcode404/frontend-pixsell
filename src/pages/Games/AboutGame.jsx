@@ -1,3 +1,4 @@
+
 import React, { useEffect, useState } from 'react';
 import style from './AboutGame.module.scss';
 import { Carousel } from 'react-bootstrap';
@@ -5,13 +6,15 @@ import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addReviews, fetchGames } from '../../reducers/Slice/GamesList';
 import { fetchPromos } from '../../reducers/Slice/PromoSlice';
-import { addBasket } from '../../reducers/Slice/basketSlice';
+import { addBasket, removeBasket } from '../../reducers/Slice/basketSlice';
 import { fetchUsersName, isExistence, printReviews } from '../../reducers/Slice/reviewSlice';
+import { fetchFavorite, saveGames } from '../../reducers/Slice/favoriteSlice';
+
 
 const AboutGame = () => {
   const { gameId } = useParams();
   const dispatch = useDispatch();
-
+  
   const [promoText, setPromoText] = useState('');
   const [validPromo, setValidPromo] = useState(null);
   const [validPromoPrice, setValidPromoPrice] = useState(null);
@@ -20,29 +23,85 @@ const AboutGame = () => {
   const [isGrade, setIsGrade] = useState(null);
 
   const promos = useSelector((state) => state.promoReducer.promo);
-  const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
-  const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
 
+  // const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
+  const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
+  const favorites = useSelector((state) => state.favoriteReducer.favorites)
+  const userID = useSelector(state => state.registrationReducer.userID.id)
+
+  
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
-
-
-  console.log(isExistenceReview);
 
   useEffect(() => {
     dispatch(fetchGames());
     dispatch(fetchPromos());
     dispatch(printReviews());
-    dispatch(isExistence());
-  }, [dispatch, isExistenceReview]);
+    dispatch(fetchFavorite())
+  }, [dispatch]);
+  
+
+
+  const getGrade = () => {
+    const grade = game?.reviews.map(review => {
+      if(review.isPositiveGrade === true) {
+        return review = true 
+      }
+      return review = false
+    })
+    const likes = grade?.filter(function(value){return value}).length;
+    const dislikes = grade?.filter((item) => item === false).length;
+
+    const p = Math.floor((likes / (likes + dislikes)) * 100);
+    
+    if(p<=20) {
+      return 'В основном отрицательные';
+    }
+    else if(p <= 40) {
+      return 'Отрицательные';
+    }else if(p > 40 && p <= 50){
+      return 'Средние';
+    }else if(p > 50 && p <=70) {
+      return 'Положительные';
+    }else if(p > 70 ) {
+      return 'В основном положительные';
+    }
+  }
+
+  
+  
+  
+
+
+  //loading
+  if(!game) {
+    return "Loading..."
+  }
 
   const addToCart = () => {
     dispatch(addBasket({id: gameId, price: game.price}));
   };
 
+
+ console.log(favorites);
+
+  const addToFavorite = () => {
+  dispatch(saveGames(game._id))
+  }
+
+  console.log("USER",userID)
+
+
+
+  const hasReview = game.reviews?.find(item => item.userId._id === userID) 
+  console.log("hasReview",(hasReview));
+
   const handleAddReview = () => {
-    if(!isExistence) {
+    // dispatch(isExistence({id: game._id}));
+    // console.log("isExistenceReview", isExistenceReview);
+    
+    if(!hasReview) {
       dispatch(addReviews({ id: game._id, textReview: textReview, isGrade: isGrade }));
     }
     setIsGrade(null);
@@ -51,11 +110,12 @@ const AboutGame = () => {
   //  console.log(game.price);
   // console.log(promos)
   // console.log(promos.map((item) => item.text).join(""));
+
   if (!game) {
     return 'Loading...';
   }
 
-  console.log(game.reviews);
+  
 
   return (
     <div className={style.about_game}>
@@ -67,7 +127,7 @@ const AboutGame = () => {
         <div className={style.information_game}>
           <h1 className={style.name_game}>{game?.name}</h1>
 
-          <p className={style.all_reviews}>Все обзоры: Очень положительные (всего {game.reviews.length})</p>
+          <p className={style.all_reviews}>Все обзоры: {getGrade()} (всего {game.reviews.length})</p>
           <p className={style.date}>ДАТА ВЫХОДА: {game?.date}</p>
           <p className={style.publisher_game}>ИЗДАТЕЛЬ: {game?.publisher}</p>
           <p className={style.genre_game}>Жанр: {game?.genres.join(', ')}</p>
@@ -85,7 +145,7 @@ const AboutGame = () => {
             className={style.input_cupon}
             type="text"
           />
-          <button onClick={handleTextPromo}>ввести</button>
+          {/* <button onClick={handleTextPromo}>ввести</button> */}
           {validPromo && <div>OK</div>}
           {validPromo === undefined && <div>NULL</div>}
         </div>
@@ -99,12 +159,15 @@ const AboutGame = () => {
                 )}
               </div>
             ) : (
-              <div>{game?.price}</div>
+              <div className={style.game_price}>{game?.price}</div>
             )}
           </p>
           <button onClick={() => addToCart()} className={style.but_buy}>
             Добавить в корзину
           </button>
+
+          <button onClick={() => addToFavorite()}>добавить в избранное</button>
+
         </div>
       </div>
 
@@ -122,7 +185,7 @@ const AboutGame = () => {
         </Carousel>
         <p className={style.description_game}>{game.description}</p>
         <div className={style.window_reviews}>
-          {isExistenceReview ? <p> Вы уже добавили отзыв</p> :(
+          {hasReview ? <p className={style.checkReviews_text}> Вы уже добавили отзыв</p> :(
             <div className={style.add_review}>
               <div className={style.input_review}>
                 <p className={style.title_review}>Добавить свой отзыв: </p>

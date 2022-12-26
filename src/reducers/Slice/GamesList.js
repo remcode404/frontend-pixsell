@@ -17,6 +17,8 @@ export const fetchGames = createAsyncThunk('fetch/games', async (page, thunkAPI)
   }
 });
 
+
+
 // gamesReviews
 export const addReviews = createAsyncThunk('add/reviews', async (data, thunkAPI) => {
   try {

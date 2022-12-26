@@ -46,8 +46,15 @@
       padding: 0.5% 0;
       .price_game {
         margin: 0;
+
+        .game_price {
+          color: white;
+        }
       }
       .but_buy {
+        background: none;
+        color: white;
+        border: none;
       }
     }
   }
@@ -68,6 +75,12 @@
     justify-content: space-between;
     background-color: #ffea2f;
     width: 90vw;
+    .checkReviews_text {
+      text-align: center;
+      padding-top: 2%;
+      font-size: 20px;
+      color: #ce0002;
+    }
     .add_review {
       display: flex;
       flex-direction: column;

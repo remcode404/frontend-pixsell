@@ -24,6 +24,8 @@ const Registration = ({
     showPassword: false,
   });
 
+  // const error = useSelector((state) => state.registrationReducer.error);
+
   const dispatch = useDispatch();
 
   const handlebtnLogin = () => {

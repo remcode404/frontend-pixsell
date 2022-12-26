@@ -23,9 +23,11 @@ const Basket = () => {
   };
 
   const totalPrice = basket?.products?.reduce((acc, item) => {
-     console.log(item?.price);
+     console.log(item);
     return acc + item?.price
   }, 0);
+
+  console.log(totalPrice);
 
   ////////////////////////////
   return (
