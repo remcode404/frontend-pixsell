@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import BasketCart from "./BasketCart";
 import { getBasket } from "../../reducers/Slice/basketSlice";
 import { fetchGames } from "../../reducers/Slice/GamesList";
 import styles from "../Basket/Basket.module.scss";
@@ -10,17 +9,18 @@ const Basket = () => {
 
   const basket = useSelector((state) => state.basketReducer.basket);
   const products = useSelector((state) => state.gameReducer.game);
-
-  console.log(products);
+  
+  const totalPrice = basket?.products?.reduce((acc, item) => {
+    console.log(item);
+    return acc + item?.price;
+  }, 0);
+  
 
   useEffect(() => {
     dispatch(getBasket());
     dispatch(fetchGames());
   }, [dispatch]);
 
-  const totalPrice = basket?.products?.reduce((acc, item) => {
-    return acc + item?.price;
-  }, 0);
 
   ////////////////////////////
   return (

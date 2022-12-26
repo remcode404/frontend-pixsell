@@ -18,12 +18,17 @@ const AboutGame = () => {
   const [promoText, setPromoText] = useState('');
   const [validPromo, setValidPromo] = useState(null);
   const [validPromoPrice, setValidPromoPrice] = useState(null);
-
+  
   const [textReview, setTextReview] = useState('');
   const [isGrade, setIsGrade] = useState(null);
-
+  
   const promos = useSelector((state) => state.promoReducer.promo);
-
+  
+  const favourites = useSelector((state) => state.favoriteReducer.favourites)
+  const tokenId = useSelector((state) => state.registrationReducer.id)
+  console.log(tokenId, "tokenId");
+  console.log(favourites, "favor");  
+  
   const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
   const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
   
@@ -31,8 +36,8 @@ const AboutGame = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
   
-
-
+  
+  
   const getGrade = () => {
     const grade = game?.reviews.map(review => {
       if(review.isPositiveGrade === true) {
@@ -74,16 +79,15 @@ const AboutGame = () => {
     dispatch(addBasket(gameId));
   };
 
-  const favorites = useSelector((state) => state.favoriteReducer.favorites)
-
- console.log(favorites);
 
   const addToFavorite = () => {
-  dispatch(saveGames(game._id))
+    console.log(gameId, tokenId, "dispatch");
+  dispatch(saveGames({gameId, tokenId}))
   }
 
 
-
+const discountPrice = Math.floor(
+  game?.price - (game?.price / 100) * promos.map((item) => item.discount)[0])
 
 
   const handleAddReview = () => {
@@ -141,9 +145,7 @@ const AboutGame = () => {
           <p className={style.price_game}>
             {promoText === promos.map((item) => item.text).join('') ? (
               <div>
-                {Math.floor(
-                  game?.price - (game?.price / 100) * promos.map((item) => item.discount)[0],
-                )}
+               {discountPrice}
               </div>
             ) : (
               <div className={style.game_price}>{game?.price}</div>
@@ -177,8 +179,8 @@ const AboutGame = () => {
               <div className={style.input_review}>
                 <p className={style.title_review}>Добавить свой отзыв: </p>
                 <textarea
-                  autofocus
-                  maxlength="200"
+                  autoFocus
+                  maxLength="200"
                   value={textReview}
                   onChange={(e) => setTextReview(e.target.value)}
                   className={style.input}
@@ -251,7 +253,7 @@ const AboutGame = () => {
                       </svg>
                     )}
 
-                    <h2 className={style.user_name}>{reviewItem.userId.nickName}</h2>
+                    <h2 className={style.user_name}>{reviewItem.userId}</h2>
                   </div>
                   <p className={style.text_review}>{reviewItem.text}</p>
                 </div>

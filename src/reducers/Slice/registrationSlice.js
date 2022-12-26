@@ -6,6 +6,8 @@ const initialState = {
   signUp: false,
   signIn: false,
   token: localStorage.getItem("token"),
+  id: localStorage.getItem("id"),
+
 };
 
 export const authSignUp = createAsyncThunk(
@@ -47,7 +49,9 @@ export const authSignIn = createAsyncThunk(
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("id", token.id);
+
       return token;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
