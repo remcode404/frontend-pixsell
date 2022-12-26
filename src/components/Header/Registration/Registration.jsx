@@ -27,13 +27,17 @@ const Registration = ({
   const dispatch = useDispatch();
 
   const handlebtnLogin = () => {
-    setEnterWindow(enterWindow);
-    setRegistration(!registration);
+    setEnterWindow(true);
+    setRegistration(false);
   };
 
   const handleSignUp = (e) => {
     e.preventDefault();
     dispatch(authSignUp({ nickName, email, usersName, password }));
+  };
+
+  const handleEnter = () => {
+    setRegistration(false);
   };
 
   const handleClickShowPassword = () => {
@@ -48,6 +52,9 @@ const Registration = ({
     <div>
       <div className={style.mainDiv}>
         <div className={style.registrationDiv}>
+        <div className={style.divX}>
+            <button onClick={() => handleEnter()}>X</button>
+          </div>
           <div className={style.registrationTitle}>Регистрация</div>
           <form onSubmit={handleSignUp}>
             <div className={style.logins}>

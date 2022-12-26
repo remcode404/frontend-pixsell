@@ -12,8 +12,9 @@ import Registration from "./components/Header/Registration/Registration";
 import AboutGame from "./pages/Games/AboutGame";
 import Enter from "./components/Header/Enter/Enter";
 import { useState } from "react";
+import PersonalAccountWindow from "./components/Header/PersonalAccount/PersonalAccountWindow";
+import Basket from "./pages/Basket/Basket";
 // import Basket from "./pages/Basket/Basket";
-
 
 function App() {
   const [enterWindow, setEnterWindow] = useState(false);
@@ -34,7 +35,7 @@ function App() {
             registration={registration}
             setRegistration={setRegistration}
             enterWindow={enterWindow}
-            setEntryWindow={setEnterWindow}
+            setEnterWindow={setEnterWindow}
           />
         </div>
       ) : null}
@@ -42,7 +43,7 @@ function App() {
         <div className={style.enterWindow}>
           <Registration
             enterWindow={enterWindow}
-            setEntryWindow={setEnterWindow}
+            setEnterWindow={setEnterWindow}
             registration={registration}
             setRegistration={setRegistration}
           />
@@ -116,17 +117,6 @@ function App() {
           }
         />
         <Route
-          path="/registration"
-          element={
-            <Registration
-              enterWindow={enterWindow}
-              setEnterWindow={setEnterWindow}
-              registration={registration}
-              setRegistration={setRegistration}
-            />
-          }
-        />
-        <Route
           path="/games/:gameId"
           element={
             <AboutGame
@@ -138,9 +128,9 @@ function App() {
           }
         />
         <Route
-          path="/enter"
+          path="/basket"
           element={
-            <Enter
+            <Basket
               enterWindow={enterWindow}
               setEnterWindow={setEnterWindow}
               registration={registration}
@@ -148,6 +138,8 @@ function App() {
             />
           }
         />
+
+        <Route path="/account" element={<PersonalAccountWindow />} />
       </Routes>
       <Footer />
     </div>
