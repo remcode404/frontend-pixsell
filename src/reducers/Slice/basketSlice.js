@@ -10,7 +10,8 @@ const initialState = {
 };
 
 export const parseJwt = (token) => {
-  let base64Url = token.split(".")[1];
+  if (token) {
+    let base64Url = token.split(".")[1];
   let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
   let jsonPayload = decodeURIComponent(
     window
@@ -23,6 +24,8 @@ export const parseJwt = (token) => {
   );
 
   return JSON.parse(jsonPayload);
+  }
+  
 };
 
 export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
@@ -34,11 +37,10 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
       headers: { Authorization: `Bearer ${initialState.token}` },
     });
     const basket = await res.json();
-    console.log(basket);
-
-    // if (basket.error) {
-    //   return thunkAPI.rejectWithValue(basket.error);
-    // }
+console.log(basket);
+    if (basket.error) {
+      return thunkAPI.rejectWithValue(basket.error);
+    }
     return thunkAPI.fulfillWithValue(basket);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -48,7 +50,6 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
 export const addBasket = createAsyncThunk(
   "basket/add",
   async ({ id, price }, thunkAPI) => {
-
     try {
       const res = await fetch(`http://localhost:3001/basket`, {
         method: "PATCH",
