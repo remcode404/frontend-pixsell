@@ -142,7 +142,7 @@ const AboutGame = () => {
           <p className={style.platform_game}>
             Платформа: {game?.platform.join(", ")}
           </p>
-          <button className={style.add_toFavorites}>
+          <button onClick={() => addToFavorite()} className={style.add_toFavorites}>
             Добавить в избранное
           </button>
         </div>
@@ -174,7 +174,7 @@ const AboutGame = () => {
             Добавить в корзину
           </button>
 
-          <button onClick={() => addToFavorite()}>добавить в избранное</button>
+      
         </div>
       </div>
 

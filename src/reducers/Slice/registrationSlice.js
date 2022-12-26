@@ -1,6 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
+
 function parseJwt (token) {
+  if(token) {
   var base64Url = token.split('.')[1];
   var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
   var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
@@ -8,6 +10,7 @@ function parseJwt (token) {
   }).join(''));
 
   return JSON.parse(jsonPayload);
+}
 };
 
 

@@ -14,6 +14,7 @@ import Enter from "./components/Header/Enter/Enter";
 import { useState } from "react";
 import PersonalAccountWindow from "./components/Header/PersonalAccount/PersonalAccountWindow";
 import Basket from "./pages/Basket/Basket";
+import MyFavoritesGames from "./pages/Games/MyGames/myGame";
 // import Basket from "./pages/Basket/Basket";
 
 function App() {
@@ -174,6 +175,7 @@ function App() {
         />
 
         <Route path="/account" element={<PersonalAccountWindow />} />
+        <Route path="mygames" element={<MyFavoritesGames />} />
       </Routes>
       <Footer />
     </div>

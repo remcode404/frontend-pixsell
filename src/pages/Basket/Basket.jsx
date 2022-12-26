@@ -29,7 +29,7 @@ const Basket = () => {
         return products?.map((prod) => {
           if (bask?.productId === prod?._id) {
             return (
-              <div className={styles.mainBlock}>
+              <div key={prod._id} className={styles.mainBlock}>
                 <div className={styles.prodList}>
                   <div className={styles.product}>
                     <div className={styles.image}>
