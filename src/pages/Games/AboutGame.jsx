@@ -87,7 +87,7 @@ const AboutGame = () => {
   }
 
   const addToCart = () => {
-    dispatch(addBasket(gameId));
+    dispatch(addBasket({id: gameId, price: game.price}));
   };
 
   const addToFavorite = () => {

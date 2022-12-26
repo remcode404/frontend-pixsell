@@ -1,5 +1,9 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
+import { getUsers } from "../../../reducers/Slice/registrationSlice";
+import MyVerticallyCenteredModal from "../../WalletModal";
 import style from "../PersonalAccount/PersonalAccountWindow.module.scss";
 
 const PersonalAccountWindow = ({
@@ -14,11 +18,27 @@ const PersonalAccountWindow = ({
     setAccountWindow(false);
   };
 
+  
+  const dispatch = useDispatch()
+  
+  const userID = useSelector((state) => state.registrationReducer.userID.id);
+  const users = useSelector(state => state.registrationReducer.users)
+  const currentUser = users.find(item => item._id === userID)
+  console.log("USER", currentUser);
+console.log(userID);
+
+  const [modalShow, setModalShow] = React.useState(false);
+
 
   const logout = () => {
     localStorage.clear();
     window.location.href = "/";
   };
+
+  useEffect(() => {
+    dispatch(getUsers())
+  }, [])
+
   return (
     <div>
       <div className={style.mainDiv}>
@@ -28,8 +48,12 @@ const PersonalAccountWindow = ({
           </div>
           <div className={style.userName}>Добро пожаловать: </div>
           <div className={style.walletDiv}>
-            <p>Сумма в кошельке: 2000р. </p>
-            <button>Пополнение кошелька</button>
+            <p>Сумма в кошельке: {currentUser?.walletAmount} </p>
+            <button onClick={() => setModalShow(true)}>Пополнение кошелька</button>
+            {<MyVerticallyCenteredModal
+        show={modalShow}
+        onHide={() => setModalShow(false)}
+      />}
           </div>
           <div className={style.myGamesButton}>
         <button>
