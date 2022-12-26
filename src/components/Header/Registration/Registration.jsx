@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import { useDispatch  } from "react-redux";
-
+import { useDispatch, useSelector } from "react-redux";
 import Input from "@material-ui/core/Input";
 import style from "../Registration/Registration.module.scss";
 import { authSignUp } from "../../../reducers/Slice/registrationSlice";
@@ -23,6 +22,10 @@ const Registration = ({
     password: "",
     showPassword: false,
   });
+  const [blur, setBlur] = useState(false);
+  const [sended, setSended] = useState(false);
+
+  const error = useSelector((state) => state.registrationReducer.error);
 
   const dispatch = useDispatch();
 
@@ -34,6 +37,7 @@ const Registration = ({
   const handleSignUp = (e) => {
     e.preventDefault();
     dispatch(authSignUp({ nickName, email, usersName, password }));
+    setBlur(false);
   };
 
   const handleEnter = () => {
@@ -48,11 +52,16 @@ const Registration = ({
     event.preventDefault();
   };
 
+  const handleBlur = () => {
+    setBlur(true);
+    setSended(false);
+  };
+
   return (
     <div>
       <div className={style.mainDiv}>
         <div className={style.registrationDiv}>
-        <div className={style.divX}>
+          <div className={style.divX}>
             <button onClick={() => handleEnter()}>X</button>
           </div>
           <div className={style.registrationTitle}>Регистрация</div>
@@ -96,14 +105,21 @@ const Registration = ({
                       {values.showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
-                } 
+                }
               />
             </div>
             <div className={style.regButton}>
-              <button type="submit">Зарегистрироваться</button>
+              <button
+                type="submit"
+                onBlur={handleBlur}
+                disabled={!nickName || !usersName || !password || !email}
+              >
+                Зарегистрироваться
+              </button>
             </div>
           </form>
           <div className={style.enterButtonDiv}>
+          <div>{error}</div>
             <div className={style.enterButtonText}>Уже есть аккаунт?</div>
             <button onClick={() => handlebtnLogin()}>Войти</button>
           </div>

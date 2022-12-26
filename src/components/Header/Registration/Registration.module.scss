@@ -4,7 +4,7 @@
   left: 1000px;
   top: 100px;
   background-image: url(./images/pixsell-dialog1.png);
-  background-size: 450px 520px;
+  background-size: 450px 550px;
   height: 599px;
   width: 450px;
   background-repeat: no-repeat;
@@ -13,7 +13,7 @@
     flex-direction: column;
     align-items: center;
     position: relative;
-    top: 150px;
+    top: 160px;
     button{
         border: none;
     }
@@ -118,6 +118,9 @@
           background-position-y: -600px;
         }
       }
+    }
+    .is-error{
+      background-color: red;
     }
   }
   .passwords {
