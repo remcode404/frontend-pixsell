@@ -14,7 +14,7 @@ import { fetchFavorite, saveGames } from '../../reducers/Slice/favoriteSlice';
 const AboutGame = () => {
   const { gameId } = useParams();
   const dispatch = useDispatch();
-
+  
   const [promoText, setPromoText] = useState('');
   const [validPromo, setValidPromo] = useState(null);
   const [validPromoPrice, setValidPromoPrice] = useState(null);
@@ -24,12 +24,22 @@ const AboutGame = () => {
 
   const promos = useSelector((state) => state.promoReducer.promo);
 
-  const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
+  // const isExistenceReview = useSelector((state) => state.reviewSlice.isExistenceReview)
   const game = useSelector((state) => state.gameReducer.game).find((item) => item._id === gameId);
+  const favorites = useSelector((state) => state.favoriteReducer.favorites)
+  const userID = useSelector(state => state.registrationReducer.userID.id)
+
   
   const handleTextPromo = () => {
     setValidPromo(promos.find((item) => item.text === promoText));
   };
+
+  useEffect(() => {
+    dispatch(fetchGames());
+    dispatch(fetchPromos());
+    dispatch(printReviews());
+    dispatch(fetchFavorite())
+  }, [dispatch]);
   
 
 
@@ -60,21 +70,19 @@ const AboutGame = () => {
   }
 
   
+  
+  
 
 
-  useEffect(() => {
-    dispatch(fetchGames());
-    dispatch(fetchPromos());
-    dispatch(printReviews());
-    dispatch(fetchFavorite())
-  }, [dispatch, isExistenceReview]);
-
+  //loading
+  if(!game) {
+    return "Loading..."
+  }
 
   const addToCart = () => {
     dispatch(addBasket(gameId));
   };
 
-  const favorites = useSelector((state) => state.favoriteReducer.favorites)
 
  console.log(favorites);
 
@@ -82,13 +90,18 @@ const AboutGame = () => {
   dispatch(saveGames(game._id))
   }
 
+  console.log("USER",userID)
 
 
 
+  const hasReview = game.reviews?.find(item => item.userId._id === userID) 
+  console.log("hasReview",(hasReview));
 
   const handleAddReview = () => {
-    dispatch(isExistence({id: game._id}));
-    if(!isExistenceReview) {
+    // dispatch(isExistence({id: game._id}));
+    // console.log("isExistenceReview", isExistenceReview);
+    
+    if(!hasReview) {
       dispatch(addReviews({ id: game._id, textReview: textReview, isGrade: isGrade }));
     }
     setIsGrade(null);
@@ -172,7 +185,7 @@ const AboutGame = () => {
         </Carousel>
         <p className={style.description_game}>{game.description}</p>
         <div className={style.window_reviews}>
-          {isExistenceReview ? <p> Вы уже добавили отзыв</p> :(
+          {hasReview ? <p className={style.checkReviews_text}> Вы уже добавили отзыв</p> :(
             <div className={style.add_review}>
               <div className={style.input_review}>
                 <p className={style.title_review}>Добавить свой отзыв: </p>
