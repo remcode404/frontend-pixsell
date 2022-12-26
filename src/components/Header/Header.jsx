@@ -43,9 +43,9 @@ const Header = ({
           <Link to="/career">
             <button className={style.BtnLink}>Карьера</button>
           </Link>
-          {/* <Link to="/news">
+          <Link to="/news">
             <button className={style.BtnLink}>Новости</button>
-          </Link> */}
+          </Link>
           <Link to="/contacts">
             <button className={style.BtnLink}>Контакты</button>
           </Link>
