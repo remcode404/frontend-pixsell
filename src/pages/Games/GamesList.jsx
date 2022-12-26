@@ -12,7 +12,7 @@ const GamesList = () => {
   const games = useSelector((state) => state.gameReducer.game);
   const error = useSelector((state) => state.gameReducer.error);
   const loadings = useSelector((state) => state.gameReducer.loading);
-console.log(games);
+
   const [page, setPage] = useState(1);
 
   useEffect(() => {

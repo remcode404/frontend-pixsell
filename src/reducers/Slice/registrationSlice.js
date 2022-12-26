@@ -1,24 +1,30 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
-function parseJwt (token) {
-  if(token) {
-  var base64Url = token.split('.')[1];
-  var base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-  var jsonPayload = decodeURIComponent(window.atob(base64).split('').map(function(c) {
-      return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-  }).join(''));
+function parseJwt(token) {
+  if (token) {
+    var base64Url = token.split(".")[1];
+    var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+    var jsonPayload = decodeURIComponent(
+      window
+        .atob(base64)
+        .split("")
+        .map(function (c) {
+          return "%" + ("00" + c.charCodeAt(0).toString(16)).slice(-2);
+        })
+        .join("")
+    );
 
-  return JSON.parse(jsonPayload);
-} 
-};
-
+    return JSON.parse(jsonPayload);
+  }
+}
 
 const initialState = {
   error: null,
   signUp: false,
   signIn: false,
   token: localStorage.getItem("token"),
-  userID: parseJwt(localStorage.getItem("token"))
+  id: localStorage.getItem("id"),
+  userID: parseJwt(localStorage.getItem("token")),
 };
 
 export const authSignUp = createAsyncThunk(
@@ -37,7 +43,7 @@ export const authSignUp = createAsyncThunk(
         return thunkAPI.rejectWithValue(json.error);
       }
       console.log(json);
-      console.log({ nickName, email, usersName, password })
+      console.log({ nickName, email, usersName, password });
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -60,7 +66,9 @@ export const authSignIn = createAsyncThunk(
       if (token.error) {
         return thunkAPI.rejectWithValue(token.error);
       }
-      localStorage.setItem("token", token);
+      localStorage.setItem("token", token.token);
+      localStorage.setItem("id", token.id);
+
       return token;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -100,4 +108,4 @@ const registrationSlice = createSlice({
   },
 });
 
-export default registrationSlice.reducer
+export default registrationSlice.reducer;

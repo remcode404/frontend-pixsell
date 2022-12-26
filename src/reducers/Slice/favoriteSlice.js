@@ -1,17 +1,23 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  favorite: [],
+  favourites: [],
   token: localStorage.getItem("token"),
   loading: false,
   error: null,
 };
 
 export const fetchFavorite = createAsyncThunk(
-  "fetch/favorite",
+  "fetch/favourites",
   async (_, thunkAPI) => {
     try {
-      const res = await fetch(`http://localhost:3001/users`);
+      const res = await fetch(`http://localhost:3001/users`, {
+        method: "GET",
+        headers: {
+          "Content-type": "application/json",
+          Authorization: `Bearer ${initialState.token}`,
+        },
+      });
       const data = await res.json();
       return data;
     } catch (e) {
@@ -22,17 +28,19 @@ export const fetchFavorite = createAsyncThunk(
 
 export const saveGames = createAsyncThunk(
   "patch/users",
-  async ({ gameId, id }, thunkAPI) => {
+  async ({ gameId, tokenId }, thunkAPI) => {
+    console.log( gameId, tokenId, "act0");
     try {
-      await fetch(`http://localhost:3001/users/games/${id}`, {
+      await fetch(`http://localhost:3001/users/games/${tokenId}`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
           Authorization: `Bearer ${initialState.token}`,
         },
-        body: JSON.stringify({ favorites: gameId }),
+        body: JSON.stringify({ favourites: gameId }),
       });
-      return  {gameId, id}
+      console.log(gameId, tokenId, "action");
+      return { gameId, tokenId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -45,15 +53,21 @@ const favoriteSlice = createSlice({
   reducers: {},
 
   extraReducers: (builder) => {
-    builder.addCase(saveGames.fulfilled, (state, action) => {
-      state.favorite = state.favorite.map((item) => {
-        if (item._id === action.payload.id) {
-          item.favorite.push(action.payload.gameId);
+    builder
+      .addCase(fetchFavorite.fulfilled, (state, action) => {
+        state.favourites = action.payload;
+      })
+      .addCase(saveGames.fulfilled, (state, action) => {
+        state.favourites = state.favourites.map((item) => {
+          if (item._id === action.payload.tokenId) {
+            item.favourites.push(action.payload.gameId);
+            console.log(item, "item1");
+            return item;
+          }
+          console.log(item, "item2");
           return item;
-        }
-        return item;
+        });
       });
-    });
   },
 });
 

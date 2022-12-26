@@ -11,7 +11,7 @@ const LastProjects = () => {
   return (
     <div className={style.LastProjects}>
       <div className={style.title}>
-        <p>Последние проекты</p>
+        {/* <p>Последние проекты</p> */}
         <div className={style.arrows}>
           <div className={style.arrow2}>
             <img className={style.Arrow2} src={arrow2} alt="f" />

@@ -23,6 +23,12 @@
       padding-left: 5%;
       width: 50%;
     }
+    .add_toFavorites{
+    background-color: #ce0002;
+    border: none;
+    color: white;
+    height: 35px;
+    }
   }
   .buy_game {
     display: flex;
@@ -30,12 +36,15 @@
     align-items: center;
     padding: 1% 0;
     margin-bottom: 1%;
+    
     .text_cupon {
       margin: 0;
       padding-right: 1%;
+    
     }
     .input_cupon {
-      margin-right: 1%;
+      margin-right: 30px;
+     margin-bottom: 25px;
     }
     .buy {
       display: flex;

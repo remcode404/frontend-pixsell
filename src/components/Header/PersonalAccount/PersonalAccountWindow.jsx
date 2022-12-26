@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import style from "../PersonalAccount/PersonalAccountWindow.module.scss";
 
 const PersonalAccountWindow = ({
@@ -31,7 +32,9 @@ const PersonalAccountWindow = ({
             <button>Пополнение кошелька</button>
           </div>
           <div className={style.myGamesButton}>
-            <button>Мои игры</button>
+        <button>
+        <Link className={style.myGamesButtons}  to='/mygames'  >Мои игры</Link>
+          </button>  
           </div>
           <div className={style.logOutButton}>
             <button onClick={logout}>Выход из аккаунта</button>
