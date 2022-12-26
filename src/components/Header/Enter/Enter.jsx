@@ -23,8 +23,6 @@ const Enter = ({
     showPassword: false,
   });
 
-  
-
   const handleEnter = () => {
     setEnterWindow(false);
   };
@@ -35,7 +33,7 @@ const Enter = ({
   };
 
   const handleEnterAccount = () => {
-    // setEnterWindow(false);
+    setEnterWindow(false);
     setAccountWindow(true);
   };
   
