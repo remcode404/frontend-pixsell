@@ -12,12 +12,9 @@ const Basket = () => {
   const basket = useSelector((state) => state.basketReducer.basket);
   const products = useSelector((state) => state.gameReducer.game);
 
-  
   const totalPrice = basket?.products?.reduce((acc, item) => {
-    console.log(item);
     return acc + item?.price;
   }, 0);
-  
 
   useEffect(() => {
     dispatch(getBasket());
@@ -27,8 +24,6 @@ const Basket = () => {
   const handleremoveBasket = (id) => {
     dispatch(removeBasket(id));
   };
-
-  console.log(totalPrice);
 
   ////////////////////////////
   return (
