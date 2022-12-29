@@ -21,11 +21,10 @@ const PersonalAccountWindow = ({
   
   const dispatch = useDispatch()
   
-  const userID = useSelector((state) => state.registrationReducer.userID.id);
+  const userID = useSelector((state) => state?.registrationReducer?.userID?.id);
   const users = useSelector(state => state.registrationReducer.users)
   const currentUser = users.find(item => item._id === userID)
-  console.log("USER", currentUser);
-console.log(userID);
+
 
   const [modalShow, setModalShow] = React.useState(false);
 

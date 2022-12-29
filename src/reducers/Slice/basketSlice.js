@@ -37,7 +37,7 @@ export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
       headers: { Authorization: `Bearer ${initialState.token}` },
     });
     const basket = await res.json();
-console.log(basket);
+
     if (basket.error) {
       return thunkAPI.rejectWithValue(basket.error);
     }

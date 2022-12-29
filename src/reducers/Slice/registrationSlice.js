@@ -40,8 +40,7 @@ export const authSignUp = createAsyncThunk(
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }
-      console.log(json);
-      console.log({ nickName, email, usersName, password })
+
       return json;
     } catch (error) {
       thunkAPI.rejectWithValue(error);
@@ -53,7 +52,7 @@ export const authSignUp = createAsyncThunk(
 export const addMoney = createAsyncThunk(
   "user/add-money",
   async (walletAmount, thunkAPI) => {
-    console.log(walletAmount);
+
     try {
       const res = await fetch("http://localhost:3001/users/walley", {
         method: "PATCH",
@@ -64,7 +63,6 @@ export const addMoney = createAsyncThunk(
         body: JSON.stringify(walletAmount),
       });
       const json = await res.json();
-      console.log("JSON",json);
       if (json.error) {
         return thunkAPI.rejectWithValue(json.error);
       }

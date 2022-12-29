@@ -29,7 +29,7 @@ export const fetchFavorite = createAsyncThunk(
 export const saveGames = createAsyncThunk(
   "patch/users",
   async ({ gameId, tokenId }, thunkAPI) => {
-    console.log( gameId, tokenId, "act0");
+
     try {
       await fetch(`http://localhost:3001/users/games/${tokenId}`, {
         method: "PATCH",
@@ -39,7 +39,6 @@ export const saveGames = createAsyncThunk(
         },
         body: JSON.stringify({ favourites: gameId }),
       });
-      console.log(gameId, tokenId, "action");
       return { gameId, tokenId };
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -61,10 +60,10 @@ const favoriteSlice = createSlice({
         state.favourites = state.favourites.map((item) => {
           if (item._id === action.payload.tokenId) {
             item.favourites.push(action.payload.gameId);
-            console.log(item, "item1");
+    
             return item;
           }
-          console.log(item, "item2");
+
           return item;
         });
       });

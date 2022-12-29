@@ -12,7 +12,6 @@ import arrow from "../photos/Arrow 3.svg";
 const MyFavoritesGames = () => {
   const dispatch = useDispatch();
   const myFavorites = useSelector((state) => state.favoriteReducer.favourites);
-  console.log(myFavorites.map((item) => item.favourites));
   useEffect(() => {
     dispatch(fetchFavorite());
   }, [dispatch]);
