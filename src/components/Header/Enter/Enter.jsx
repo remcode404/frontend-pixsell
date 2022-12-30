@@ -70,7 +70,7 @@ const Enter = ({
     if (error) {
       return <div>{error}</div>;
     }
-    console.log(error);
+ 
   };
   return (
     <div>

@@ -28,8 +28,7 @@ const AboutGame = () => {
 
   const favourites = useSelector((state) => state.favoriteReducer.favourites);
   const tokenId = useSelector((state) => state.registrationReducer.id);
-  console.log(tokenId, "tokenId");
-  console.log(favourites, "favor");
+
 
   const isExistenceReview = useSelector(
     (state) => state.reviewSlice.isExistenceReview
@@ -87,7 +86,7 @@ const AboutGame = () => {
   }
 
   const addToCart = () => {
-    dispatch(addBasket(gameId));
+    dispatch(addBasket({id: gameId, price: game.price}));
   };
 
   const addToFavorite = () => {

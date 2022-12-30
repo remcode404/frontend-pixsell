@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { getBasket } from "../../reducers/Slice/basketSlice";
+// import BasketCart from "./BasketCart";
+import { getBasket, removeBasket } from "../../reducers/Slice/basketSlice";
+
 import { fetchGames } from "../../reducers/Slice/GamesList";
 import styles from "../Basket/Basket.module.scss";
 
@@ -9,18 +11,19 @@ const Basket = () => {
 
   const basket = useSelector((state) => state.basketReducer.basket);
   const products = useSelector((state) => state.gameReducer.game);
-  
+
   const totalPrice = basket?.products?.reduce((acc, item) => {
-    console.log(item);
     return acc + item?.price;
   }, 0);
-  
 
   useEffect(() => {
     dispatch(getBasket());
     dispatch(fetchGames());
   }, [dispatch]);
 
+  const handleremoveBasket = (id) => {
+    dispatch(removeBasket(id));
+  };
 
   ////////////////////////////
   return (
@@ -46,7 +49,12 @@ const Basket = () => {
                       <div className={styles.gamePrice}>Стоимость</div>
                       <div className={styles.price}>{prod?.price} ₽</div>
                     </div>
-                    <button className={styles.delBtn}>X</button>
+                    <button
+                      className={styles.delBtn}
+                      onClick={() => handleremoveBasket(bask.productId)}
+                    >
+                      X
+                    </button>
                   </div>
                 </div>
               </div>
@@ -55,7 +63,9 @@ const Basket = () => {
         });
       })}
       {/* <div className={styles.total}>Итого: {totalPrice} ₽</div> */}
-      <div className={styles.total} id="box">Итого: {totalPrice} ₽</div>
+      <div className={styles.total} id="box">
+        Итого: {totalPrice} ₽
+      </div>
     </div>
   );
 };

@@ -10,7 +10,8 @@ const initialState = {
 };
 
 export const parseJwt = (token) => {
-  let base64Url = token.split(".")[1];
+  if (token) {
+    let base64Url = token.split(".")[1];
   let base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
   let jsonPayload = decodeURIComponent(
     window
@@ -22,24 +23,24 @@ export const parseJwt = (token) => {
       .join("")
   );
 
-  console.log(JSON.parse(jsonPayload));
   return JSON.parse(jsonPayload);
+  }
+  
 };
 
 export const getBasket = createAsyncThunk("basket/get", async (_, thunkAPI) => {
-//   const token = thunkAPI.getState().registration.token;
-//   console.log(token);
+  //   const token = thunkAPI.getState().registration.token;
+  //   console.log(token);
   try {
     const res = await fetch("http://localhost:3001/basket/user", {
       method: "GET",
       headers: { Authorization: `Bearer ${initialState.token}` },
     });
     const basket = await res.json();
-console.log(basket);
+
     if (basket.error) {
       return thunkAPI.rejectWithValue(basket.error);
     }
-   
     return thunkAPI.fulfillWithValue(basket);
   } catch (error) {
     return thunkAPI.rejectWithValue(error);
@@ -48,22 +49,21 @@ console.log(basket);
 
 export const addBasket = createAsyncThunk(
   "basket/add",
-  async (id , thunkAPI) => {
- 
+  async ({ id, price }, thunkAPI) => {
     try {
       const res = await fetch(`http://localhost:3001/basket`, {
         method: "PATCH",
         headers: {
           "Content-type": "application/json",
-         Authorization: `Bearer ${initialState.token}`,
+          Authorization: `Bearer ${initialState.token}`,
         },
-        body: JSON.stringify({ product: { productId: id } }),
+        body: JSON.stringify({ product: { productId: id, price: price } }),
       });
       const data = await res.json();
       if (data.error) {
         return thunkAPI.rejectWithValue(data.error);
       }
-      return thunkAPI.fulfillWithValue(id);
+      return thunkAPI.fulfillWithValue({id, price});
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
     }
@@ -73,12 +73,11 @@ export const addBasket = createAsyncThunk(
 export const removeBasket = createAsyncThunk(
   "basket/delete",
   async (productId, thunkAPI) => {
-    const token = thunkAPI.getState().registration.token;
     try {
       await fetch(`http://localhost:3001/basket/delete/${productId}`, {
         method: "PATCH",
         headers: {
-          Authorization: `Bearer ${token}`,
+          Authorization: `Bearer ${initialState.token}` ,
         },
       });
       return productId;
@@ -93,22 +92,18 @@ const cartSlice = createSlice({
   initialState,
 
   extraReducers: (builder) => {
-    builder.addCase(addBasket.fulfilled, (state, action) => {
-      state.basket.products.push({
-        productId: action.payload,
-        amount: 1,
+    builder
+      .addCase(addBasket.fulfilled, (state, action) => {
+        console.log(action.payload);
+        state.basket = action.payload})
+      .addCase(removeBasket.fulfilled, (state, action) => {
+        state.basket.products = state.basket.products.filter(
+          (item) => item.productId !== action.payload
+        );
+      })
+      .addCase(getBasket.fulfilled, (state, action) => {
+        state.basket = action.payload;
       });
-    });
-
-    builder.addCase(removeBasket.fulfilled, (state, action) => {
-      state.basket.products = state.basket.products.filter(
-        (item) => item.productId !== action.payload
-      );
-    });
-
-    builder.addCase(getBasket.fulfilled, (state, action) => {
-      state.basket = action.payload;
-    });
   },
 });
 
